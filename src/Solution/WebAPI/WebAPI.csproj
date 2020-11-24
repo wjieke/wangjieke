@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Log4netLogs\**" />
+    <Content Remove="logs\**" />
+    <EmbeddedResource Remove="Log4netLogs\**" />
+    <EmbeddedResource Remove="logs\**" />
+    <None Remove="Log4netLogs\**" />
+    <None Remove="logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="5.2.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.7" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Service\Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="WebAPI.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>React</TypeScriptJSXEmit>
+    <TypeScriptModuleKind />
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>D:\wangjieke_svn\src\CodeDream\WebAPI\WebAPI.xml</DocumentationFile>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
+</Project>

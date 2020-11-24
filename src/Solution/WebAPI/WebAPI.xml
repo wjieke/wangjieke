@@ -1,0 +1,396 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebAPI</name>
+    </assembly>
+    <members>
+        <member name="M:WebAPI.Controllers.Bases.BaseController`2.AddInfo(`0)">
+            <summary>
+            添加信息
+            </summary>
+            <param name="model">模型类</param>
+            <returns>返回增加的数据实体类</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Bases.BaseController`2.DelInfo(System.Int32[])">
+            <summary>
+            批量删除
+            </summary>
+            <param name="ids">删除数据的id数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Bases.BaseController`2.ModInfo(`0)">
+            <summary>
+            修改信息
+            </summary>
+            <param name="model">模型类</param>
+            <returns>返回修改后的数据实体类</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Bases.BaseController`2.GetInfo(System.Int32)">
+            <summary>
+            查询(根据ID查询单条数据信息)
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Bases.BaseController`2.AddInfoAsync(`0)">
+            <summary>
+            添加信息
+            </summary>
+            <param name="model">模型类</param>
+            <returns>返回增加的数据实体类</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Bases.BaseController`2.DelInfoAsync(System.Int32[])">
+            <summary>
+            批量删除
+            </summary>
+            <param name="ids">删除数据的id数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Bases.BaseController`2.ModInfoAsync(`0)">
+            <summary>
+            修改信息
+            </summary>
+            <param name="model">模型类</param>
+            <returns>返回修改后的数据实体类</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Bases.BaseController`2.GetInfoAsync(System.Int32)">
+            <summary>
+            查询(根据ID查询单条数据信息)
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Bases.TreeController`2.GetInfo(System.Int32)">
+            <summary>
+            查询(根据ID查询单条数据信息)
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Bases.TreeController`2.GetNode(System.Nullable{System.Int32})">
+            <summary>
+            获取级联器数据
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Bases.TreeController`2.GetInfoAsync(System.Int32)">
+            <summary>
+            查询(根据ID查询单条数据信息)
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Bases.TreeController`2.GetNodeAsync(System.Nullable{System.Int32})">
+            <summary>
+            获取级联器数据
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Companys.CompanyController.GetList(Models.CompanyModels.SearchCompany)">
+            <summary>
+            查询(分页数据)
+            </summary>
+            <param name="o">搜索条件数据</param>
+            <returns>Json数据集合</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Companys.DepartmentController.GetList(Models.CompanyModels.SearchDepartment)">
+            <summary>
+            查询(分页数据)
+            </summary>
+            <param name="o">搜索条件数据</param>
+            <returns>Json数据集合</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Companys.DepartmentController.GetTree">
+            <summary>
+            获取树结构数据
+            </summary>
+            <returns>返回树结构数据</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Companys.DepartmentController.GetPath(System.Nullable{System.Int32})">
+            <summary>
+            获取树节点路径
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Systems.AreaController.GetList(Models.SystemModels.SearchArea)">
+            <summary>
+            查询(分页数据)
+            </summary>
+            <param name="o">搜索条件数据</param>
+            <returns>Json数据集合</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Systems.AreaController.GetTree">
+            <summary>
+            获取树结构数据
+            </summary>
+            <returns>返回树结构数据</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Systems.AreaController.GetPath(System.Nullable{System.Int32})">
+            <summary>
+            获取树节点路径
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WebAPI.Controllers.Systems.LoginController">
+            <summary>
+             此控制器已作废，登录模块已迁移到User模块中
+            </summary>
+        </member>
+        <member name="M:WebAPI.Controllers.Systems.MenuController.GetList(Models.SystemModels.SearchMenu)">
+            <summary>
+            查询(分页数据)
+            </summary>
+            <param name="o">搜索条件数据</param>
+            <returns>Json数据集合</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Systems.MenuController.GetTree">
+            <summary>
+            获取树结构数据
+            </summary>
+            <returns>返回树结构数据</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Systems.MenuController.GetPath(System.Nullable{System.Int32})">
+            <summary>
+            获取树节点路径
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Systems.PermissionController.AddInfo(Models.SystemModels.Permission)">
+            <summary>
+            添加信息
+            </summary>
+            <param name="model">模型类</param>
+            <returns>返回增加的数据实体类</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Systems.PermissionController.ModInfo(Models.SystemModels.Permission)">
+            <summary>
+            修改信息
+            </summary>
+            <param name="model">模型类</param>
+            <returns>返回修改后的数据实体类</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Systems.PermissionController.DelInfo(System.String[])">
+            <summary>
+            批量删除
+            </summary>
+            <param name="ids">删除数据的id数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Systems.PermissionController.GetInfo(System.String)">
+            <summary>
+            查询(根据ID查询单条数据信息)
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Systems.PermissionController.GetPath(System.String)">
+            <summary>
+            获取对象路径
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Systems.PermissionController.GetList(Models.SystemModels.SearchPermission)">
+            <summary>
+            查询 [分页数据]
+            </summary>
+            <param name="o">搜索条件数据</param>
+            <returns>Json数据集合</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Systems.PermissionController.GetNode(System.String)">
+            <summary>
+            获得节点
+            </summary>
+            <param name="parentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Systems.PermissionController.GetTree">
+            <summary>
+            获得树
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Systems.RoleController.GetList(Models.SystemModels.SearchRole)">
+            <summary>
+            查询(分页数据)
+            </summary>
+            <param name="o">搜索条件数据</param>
+            <returns>Json数据集合</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Systems.RoleController.GetTree">
+            <summary>
+            获取树结构数据
+            </summary>
+            <returns>返回树结构数据</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Systems.RoleController.GetPath(System.Nullable{System.Int32})">
+            <summary>
+            获取树节点路径
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Systems.UserController.GetList(Models.SystemModels.SearchUser)">
+            <summary>
+            查询(分页数据)
+            </summary>
+            <param name="o">搜索条件数据</param>
+            <returns>Json数据集合</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Systems.UserController.UserLogin(Models.SystemModels.CheckUser)">
+            <summary>
+            验证用户登录
+            </summary>
+            <param name="o"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Tools.UtilityController.GetClientCategory">
+            <summary>
+            获取终端类别枚举
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Tools.UtilityController.GetDataState">
+            <summary>
+            获取数据状态枚举
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Tools.UtilityController.GetSexType">
+            <summary>
+            获取性别类型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Tools.VerifyCodeController.SetSession(System.String)">
+            <summary>
+            //把随机码存入Session
+            </summary>
+            <param name="code">随机代码</param>
+        </member>
+        <member name="M:WebAPI.Controllers.Tools.VerifyCodeController.NumberVerifyCode">
+            <summary>
+            数字验证码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Tools.VerifyCodeController.AbcVerifyCode">
+            <summary>
+            字母验证码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.Tools.VerifyCodeController.MixVerifyCode">
+            <summary>
+            混合验证码
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:WebAPI.Extensions.AutofacContainerBuilder">
+            <summary>
+            Autofac容器生成器
+            </summary>
+        </member>
+        <member name="M:WebAPI.Extensions.AutofacContainerBuilder.RegisterService(Autofac.ContainerBuilder)">
+            <summary>
+            Autofac容器生成器扩展方法（注册服务）
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:WebAPI.Extensions.ConfigureExtensions">
+            <summary>
+            添加自定义服务，配置扩展类（ConfigureServices 配置服务）
+            </summary>
+        </member>
+        <member name="M:WebAPI.Extensions.ConfigureExtensions.ConfigureAddDbContext(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            添加DbContext 配置连接字符串
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:WebAPI.Extensions.ConfigureExtensions.ConfigureAddCors(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
+            <summary>
+            配置跨域
+            </summary>
+            <param name="services"></param>
+            <param name="policyName"></param>
+        </member>
+        <member name="M:WebAPI.Extensions.ConfigureExtensions.ConfigureSession(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置Session内存缓存
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:WebAPI.Extensions.ConfigureExtensions.ConfigureJwt(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            配置API添加Jwt身份验证
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:WebAPI.Extensions.ConfigureExtensions.ConfigureSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置注册Swagger生成器，定义一个和多个Swagger文档
+            Json文件：https://localhost:44372/swagger/v1/swagger.json
+            UI浏览：https://localhost:44372/swagger/ui/index.html
+            线上Json文件：http://www.wangjk.wang:8090/swagger/v1/swagger.json
+            线上UI浏览：http://www.wangjk.wang:8090/swagger/ui/index.html
+            发布到线上，要修改index.html文件中对应的js代码，地址也指向线上的UI地址
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:WebAPI.Extensions.ConfigureExtensions.ConfigureRoute(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置ASP.NET Core 3.0 路由方式
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="T:WebAPI.Extensions.CustomizeExceptionMiddleware">
+            <summary>
+            自定义异常中间件类
+            </summary>
+        </member>
+        <member name="T:WebAPI.Extensions.CustomExceptionMiddlewareExtensions">
+            <summary>
+            自定义异常中间件扩展类
+            </summary>
+        </member>
+        <member name="M:WebAPI.Extensions.CustomExceptionMiddlewareExtensions.UseCustomExceptionMiddleware(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            异常中间件扩展方法
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="T:WebAPI.Filters.ModelValidationAttribute">
+            <summary>
+            Action 过滤器
+            </summary>
+        </member>
+        <member name="M:WebAPI.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            此方法由运行时调用，使用此方法向容器添加服务。
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:WebAPI.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            此方法由运行时调用。使用此方法配置HTTP请求管道。
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+        <member name="M:WebAPI.Startup.ConfigureContainer(Autofac.ContainerBuilder)">
+            <summary>
+            Autofac 依赖注入容器
+            </summary>
+            <param name="builder"></param>
+        </member>
+    </members>
+</doc>

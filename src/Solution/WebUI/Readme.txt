@@ -8,7 +8,10 @@ https://router.vuejs.org/zh/guide/essentials/history-mode.html#%E5%90%8E%E7%AB%A
 Vue模板只能有一个根对象，不能有平级节点，否则报如下错
 Component template should contain exactly one root element. If you are using v-if on multiple elemen
 
+node.js npm命令：
 安装项目依赖：npm install（SVN拉取项目下来先初始化安装项目依赖包）
+运行项目：npm run serve
+编译打包：npm run build
 
 ---------------------------------------------------------------------------------------------------------------------------
 安装sass：（目前项目中，因为下载sass有坑，所以卸载了，没用到。）

@@ -44,7 +44,6 @@ namespace Library.Tool
                 return formatter.Deserialize(ms) as T;
             }
         }
-
         #endregion
     }
 }

@@ -54,6 +54,8 @@ namespace WebAPI.Extensions
                     //builder.AllowAnyOrigin()
                     //指定域名端口的主机访问
                     string[] origins = new string[] {
+                        "http://localhost:8080",
+                        "http://127.0.0.1:8080",
                         "http://localhost:1337",
                         "http://127.0.0.1:1337",
                         "http://www.wangjk.wang",

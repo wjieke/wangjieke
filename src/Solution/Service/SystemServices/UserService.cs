@@ -29,11 +29,12 @@ namespace Services.SystemServices
     public class UserService : BaseService<User>, IUserService
     {
         private readonly JwtSetting _jwtSetting;
-        private readonly IConfiguration _configuration;
-        public UserService(IOptions<JwtSetting> option, IConfiguration configuration)
+        //private readonly IConfiguration _configuration;
+        //public UserService(IOptions<JwtSetting> option, IConfiguration configuration)
+        public UserService(IOptions<JwtSetting> option)
         {
             _jwtSetting = option.Value;
-            _configuration = configuration;
+            //_configuration = configuration;
         }
 
         public IUserRoleService UserRoleService { get; set; }
@@ -211,10 +212,26 @@ namespace Services.SystemServices
                     var user = Context.Users.AsNoTracking().Where(m => m.UserName == o.UserName && m.Password == o.Password).FirstOrDefault();
                     if (user != null)
                     {
+                        //Json转换配置
+                        var jso = new JsonSerializerOptions()
+                        {
+                            Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
+                            ReadCommentHandling = JsonCommentHandling.Skip,//跳过自我循环引用
+                            PropertyNamingPolicy = JsonNamingPolicy.CamelCase//默认大写，配置驼峰命名
+                        };
+
+                        string strUser = JsonSerializer.Serialize(user, jso);
+                        byte[] byteUser = System.Text.Encoding.Default.GetBytes(strUser);
+
                         //登录成功保存登录用户信息
-                        HttpContextAccessor.HttpContext.Session.Set("CurrentUser", user.ToBytes());
-                        JwtSetting setting = new JwtSetting();
-                        _configuration.Bind("JwtSetting", setting);
+                        //HttpContextAccessor.HttpContext.Session.Set("CurrentUser", user.ToBytes());
+
+                        HttpContextAccessor.HttpContext.Session.Set("CurrentUser", byteUser);
+
+
+                        //JwtSetting setting = new JwtSetting();
+                        //_configuration.Bind("JwtSetting", setting);
+
                         var claims = new[]{
                             new Claim(ClaimTypes.Name, user.UserName)
                         };

@@ -1,4 +1,4 @@
-﻿using Model.Enum;
+﻿using static Model.Enum.SystemEnum;
 
 namespace Model.ModelBase
 {

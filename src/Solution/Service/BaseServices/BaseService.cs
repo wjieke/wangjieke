@@ -14,6 +14,7 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Unicode;
 using System.Threading.Tasks;
+using static Model.Enum.SystemEnum;
 
 namespace Services.BaseServices
 {
@@ -31,24 +32,13 @@ namespace Services.BaseServices
         /// <summary>
         /// 获取当前登录用户
         /// </summary>
-        public User CurrentUser
+        public User CurrentLoginUser
         {
             get
             {
                 try
                 {
-                    //return HttpContextAccessor.HttpContext.Session.Get("CurrentUser").ToClass<User>();
-
-                    var jso = new JsonSerializerOptions()
-                    {
-                        Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
-                        ReadCommentHandling = JsonCommentHandling.Skip,//跳过自我循环引用
-                        PropertyNamingPolicy = JsonNamingPolicy.CamelCase//默认大写，配置驼峰命名
-                    };
-                    byte[] byteUser = HttpContextAccessor.HttpContext.Session.Get("CurrentUser");
-                    string strUser = System.Text.Encoding.Default.GetString(byteUser);
-                    User user = JsonSerializer.Deserialize<User>(strUser, jso);
-                    return user;
+                    return HttpContextAccessor.HttpContext.Session.Get("CurrentLoginUserInfo").ToObject<User>();
                 }
                 catch (Exception ex)
                 {

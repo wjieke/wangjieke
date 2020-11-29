@@ -1,11 +1,11 @@
 ﻿using DbAccess.DbContext;
 using Microsoft.EntityFrameworkCore;
-using Model.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using static Model.Enum.SystemEnum;
 
 namespace DbAccess.DbService
 {

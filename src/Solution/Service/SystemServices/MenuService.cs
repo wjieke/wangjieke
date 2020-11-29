@@ -1,15 +1,15 @@
 ﻿using IServices.ISystemServices;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Model.ModelSearch;
 using Model.Entity.System;
+using Model.ModelSearch;
 using Model.ModelTool;
-using Model.Enum;
 using Services.BaseServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using static Model.Enum.SystemEnum;
 
 namespace Services.SystemServices
 {
@@ -50,7 +50,7 @@ namespace Services.SystemServices
                 if (isAdopt)
                 {
                     o.Degree = o.ParentId == null ? 1 : Find(o.ParentId).Degree + 1;
-                    o.CreatorId = CurrentUser.Id;
+                    o.CreatorId = CurrentLoginUser.Id;
                     int ret = base.DbExecuteAction(o,DbActionType.Add);
                     if (ret > 0)
                     {

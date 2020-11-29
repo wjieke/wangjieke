@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Model.ModelTool;
-using Model.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static Model.Enum.SystemEnum;
 
 namespace WebAPI.Controllers.Tools
 {
@@ -14,6 +14,9 @@ namespace WebAPI.Controllers.Tools
     [EnableCors("any")]   //启用跨域（设置跨域处理的代理）
     public class UtilityController : ControllerBase
     {
+        private DataState DataState { get; set; }
+        private SexType SexType { get; set; }
+
         /// <summary>
         /// 获取终端类别枚举
         /// </summary>
@@ -21,8 +24,7 @@ namespace WebAPI.Controllers.Tools
         [HttpGet("GetClientCategory")]
         public List<EnumInfo> GetClientCategory()
         {
-            var enumList = CommonTool.GetEnumList<ClientCategory>();
-            return enumList;
+            return new ClientCategory().GetEnumList();
         }
 
         /// <summary>
@@ -32,10 +34,7 @@ namespace WebAPI.Controllers.Tools
         [HttpGet("GetDataState")]
         public List<EnumInfo> GetDataState()
         {
-            var enumList = CommonTool.GetEnumList<DataState>();
-            string deleted = CommonTool.GetEnumDescription(DataState.Deleted);
-            enumList = enumList.Where(o => !o.Label.Contains(deleted)).ToList();
-            return enumList;
+            return DataState.GetEnumList().Where(o => o.Value != (Convert.ToInt32(DataState.Deleted))).ToList();
         }
 
         /// <summary>
@@ -45,10 +44,7 @@ namespace WebAPI.Controllers.Tools
         [HttpGet("GetSexType")]
         public List<EnumInfo> GetSexType()
         {
-            var enumList = CommonTool.GetEnumList<SexType>();
-            string unknown = CommonTool.GetEnumDescription(SexType.Unknown);
-            enumList = enumList.Where(o => !o.Label.Contains(unknown)).ToList();
-            return enumList;
+            return SexType.GetEnumList().Where(i => i.Value != (Convert.ToInt32(SexType.Unknown))).ToList();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Model.ModelBase;
-using Model.Enum;
 using System.ComponentModel.DataAnnotations.Schema;
+using static Model.Enum.SystemEnum;
 
 namespace Model.Entity.System
 {

@@ -1,16 +1,16 @@
 ﻿using IServices.ISystemServices;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Model.ModelSearch;
 using Model.Entity.System;
+using Model.ModelSearch;
 using Model.ModelTool;
-using Model.Enum;
 using Services.BaseServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using static Model.Enum.SystemEnum;
 
 namespace Services.SystemServices
 {
@@ -54,7 +54,7 @@ namespace Services.SystemServices
                 {
                     Expression<Func<Permission, bool>> whereFun = p => p.PermissionId == permission.ParentId;
                     permission.Degree = permission.ParentId == null ? 1 : Context.Set<Permission>().FirstOrDefault(whereFun).Degree + 1;
-                    permission.CreatorId = CurrentUser.Id;
+                    permission.CreatorId = CurrentLoginUser.Id;
                     int ret = base.DbExecuteAction(permission, DbActionType.Add);
                     if (ret > 0)
                     {
@@ -379,7 +379,7 @@ namespace Services.SystemServices
                 {
                     Expression<Func<Permission, bool>> whereFun = p => p.PermissionId == permission.ParentId;
                     permission.Degree = permission.ParentId == null ? 1 : Context.Set<Permission>().FirstOrDefault(whereFun).Degree + 1;
-                    permission.CreatorId = CurrentUser.Id;
+                    permission.CreatorId = CurrentLoginUser.Id;
                     int ret = await base.DbExecuteActionAsync(permission, DbActionType.Add);
                     if (ret > 0)
                     {

@@ -1,12 +1,12 @@
 ﻿using IServices.ISystemServices;
-using Model.ModelSearch;
 using Model.Entity.System;
+using Model.ModelSearch;
 using Model.ModelTool;
-using Model.Enum;
 using Services.BaseServices;
 using System;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using static Model.Enum.SystemEnum;
 
 namespace Services.SystemServices
 {
@@ -31,7 +31,7 @@ namespace Services.SystemServices
                 }
                 else
                 {
-                    company.CreatorId = CurrentUser.Id;
+                    company.CreatorId = CurrentLoginUser.Id;
                     return base.AddInfo(company);
                 }
             }
@@ -50,7 +50,7 @@ namespace Services.SystemServices
         /// <returns></returns>
         public override ActionResultInfo<Company> ModInfo(Company company)
         {
-            company.ModifierId = CurrentUser.Id;
+            company.ModifierId = CurrentLoginUser.Id;
             company.ModifyTime = DateTime.Now;
             return base.ModInfo(company);
         }
@@ -100,7 +100,7 @@ namespace Services.SystemServices
                 }
                 else
                 {
-                    company.CreatorId = CurrentUser.Id;
+                    company.CreatorId = CurrentLoginUser.Id;
                     return base.AddInfo(company);
                 }
             }
@@ -119,7 +119,7 @@ namespace Services.SystemServices
         /// <returns></returns>
         public override async Task<ActionResultInfo<Company>> ModInfoAsync(Company company)
         {
-            company.ModifierId = CurrentUser.Id;
+            company.ModifierId = CurrentLoginUser.Id;
             company.ModifyTime = DateTime.Now;
             return await base.ModInfoAsync(company);
         }

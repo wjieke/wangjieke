@@ -1,28 +1,22 @@
 ﻿using IService.ISystemServices;
 using IServices.ISystemServices;
-using Library.Attributes;
 using Library.Tool;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Model.Entity.System;
 using Model.ModelDto;
 using Model.ModelSearch;
-using Model.Entity.System;
 using Model.ModelTool;
-using Model.Enum;
 using Services.BaseServices;
 using System;
-using System.Data.SqlClient;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Security.Claims;
 using System.Text;
-using System.Text.Encodings.Web;
-using System.Text.Json;
-using System.Text.Unicode;
+using static Model.Enum.SystemEnum;
 
 namespace Services.SystemServices
 {
@@ -65,7 +59,7 @@ namespace Services.SystemServices
                         {
                             //密码加密
                             user.Password = EncryptDecryptTool.EncryptPassWord(user.Password);
-                            user.CreatorId = CurrentUser.Id;
+                            user.CreatorId = CurrentLoginUser.Id;
                             var ret = base.AddInfo(user);
                             if (ret.ResultState == ResultState.Success)
                             {
@@ -113,7 +107,7 @@ namespace Services.SystemServices
         /// <returns></returns>
         public override ActionResultInfo<User> ModInfo(User user)
         {
-            user.ModifierId = CurrentUser.Id;
+            user.ModifierId = CurrentLoginUser.Id;
             user.ModifyTime = DateTime.Now;
 
             //using (var transaction = Context.Database.BeginTransaction())
@@ -212,22 +206,8 @@ namespace Services.SystemServices
                     var user = Context.Users.AsNoTracking().Where(m => m.UserName == o.UserName && m.Password == o.Password).FirstOrDefault();
                     if (user != null)
                     {
-                        //Json转换配置
-                        var jso = new JsonSerializerOptions()
-                        {
-                            Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
-                            ReadCommentHandling = JsonCommentHandling.Skip,//跳过自我循环引用
-                            PropertyNamingPolicy = JsonNamingPolicy.CamelCase//默认大写，配置驼峰命名
-                        };
-
-                        string strUser = JsonSerializer.Serialize(user, jso);
-                        byte[] byteUser = System.Text.Encoding.Default.GetBytes(strUser);
-
                         //登录成功保存登录用户信息
-                        //HttpContextAccessor.HttpContext.Session.Set("CurrentUser", user.ToBytes());
-
-                        HttpContextAccessor.HttpContext.Session.Set("CurrentUser", byteUser);
-
+                        HttpContextAccessor.HttpContext.Session.Set("CurrentLoginUserInfo", user.ToBytes());
 
                         //JwtSetting setting = new JwtSetting();
                         //_configuration.Bind("JwtSetting", setting);
@@ -249,14 +229,7 @@ namespace Services.SystemServices
                             User = user,
                             Token = new JwtSecurityTokenHandler().WriteToken(token)
                         };
-                        //把指定的对象序列化成Json字符串
-                        var jsonStr = JsonSerializer.Serialize(resLogin, new JsonSerializerOptions()
-                        {
-                            Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
-                            ReadCommentHandling = JsonCommentHandling.Skip,//跳过自我循环引用
-                            PropertyNamingPolicy = JsonNamingPolicy.CamelCase//默认大写，配置驼峰命名
-                        });
-                        return jsonStr;
+                        return resLogin.ToJsonString();
                     }
                     return "0";
                 }

@@ -1,16 +1,16 @@
 ﻿using IServices.ISystemServices;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Model.ModelSearch;
 using Model.Entity.System;
+using Model.ModelSearch;
 using Model.ModelTool;
-using Model.Enum;
 using Services.BaseServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using static Model.Enum.SystemEnum;
 
 namespace Services.SystemServices
 {
@@ -55,7 +55,7 @@ namespace Services.SystemServices
                 if (isAdopt)
                 {
                     role.Degree = role.ParentId == null ? 1 : Find(role.ParentId).Degree + 1;
-                    role.CreatorId = CurrentUser.Id;
+                    role.CreatorId = CurrentLoginUser.Id;
                     using (var transaction = Context.Database.BeginTransaction())
                     {
                         try
@@ -347,7 +347,7 @@ namespace Services.SystemServices
                 if (isAdopt)
                 {
                     role.Degree = role.ParentId == null ? 1 : Find(role.ParentId).Degree + 1;
-                    role.CreatorId = CurrentUser.Id;
+                    role.CreatorId = CurrentLoginUser.Id;
                     using (var transaction = Context.Database.BeginTransaction())
                     {
                         try

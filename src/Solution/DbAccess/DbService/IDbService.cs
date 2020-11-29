@@ -1,8 +1,8 @@
-﻿using Model.Enum;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using static Model.Enum.SystemEnum;
 
 namespace DbAccess.DbService
 {

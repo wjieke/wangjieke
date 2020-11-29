@@ -1,7 +1,7 @@
-﻿using Model.Enum;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using static Model.Enum.SystemEnum;
 
 namespace Model.ModelBase
 {

@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
+using AutoMapper;
 using DbAccess.DbContext;
+using Library.AutoMapper;
 using Library.Interceptor;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -45,6 +47,21 @@ namespace WebAPI.Extensions
 
             //注册拦截器类
             builder.RegisterType<AutofacServiceInterceptor>();
+
+            //注册AutoMapper
+            builder.Register(
+                c => new MapperConfiguration(cfg =>
+                {
+                    cfg.AddProfile(new AutoMapperProfile());
+                }))
+                .AsSelf()
+                .SingleInstance();
+
+            builder.Register(
+                c => c.Resolve<MapperConfiguration>().CreateMapper(c.Resolve))
+                .As<IMapper>()
+                .InstancePerLifetimeScope()
+                .PropertiesAutowired();
 
             var assembly = Assembly.Load("Service");
             builder.RegisterAssemblyTypes(assembly).Where(type => type.GetInterface("IBaseService`1") != null)

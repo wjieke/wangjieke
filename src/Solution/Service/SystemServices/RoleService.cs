@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Model.Entity.System;
 using Model.ModelSearch;
 using Model.ModelTool;
+using Model.ModelView;
 using Services.BaseServices;
 using System;
 using System.Collections.Generic;
@@ -214,9 +215,10 @@ namespace Services.SystemServices
             //排序表达式
             Expression<Func<Role, object>> orderByFun = null;
             orderByFun = m => m.Id;
+
             try
             {
-                return base.GetPage(o.PageIndex, o.PageSize, whereFun, null, orderByFun, true);
+                return base.GetPage(o.PageIndex, o.PageSize, whereFun, orderByFun, true);
             }
             catch (Exception e)
             {
@@ -509,7 +511,7 @@ namespace Services.SystemServices
 
             try
             {
-                return await base.GetPageAsync(o.PageIndex, o.PageSize, whereFun, null, orderByFun, true);
+                return await base.GetPageAsync(o.PageIndex, o.PageSize, whereFun, orderByFun, true);
             }
             catch (Exception e)
             {

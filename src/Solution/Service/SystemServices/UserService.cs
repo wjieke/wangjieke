@@ -9,6 +9,7 @@ using Model.Entity.System;
 using Model.ModelDto;
 using Model.ModelSearch;
 using Model.ModelTool;
+using Model.ModelView;
 using Services.BaseServices;
 using System;
 using System.IdentityModel.Tokens.Jwt;
@@ -169,14 +170,12 @@ namespace Services.SystemServices
             {
                 whereFun = m => m.Birthday.Equals(userSearch.Birthday);
             }
-            Expression<Func<User, object>> includeFun = null;
-            includeFun = m => m.Department;
             //排序表达式
             Expression<Func<User, object>> orderByFun = null;
             orderByFun = m => m.Id;
             try
             {
-                return base.GetPage(userSearch.PageIndex, userSearch.PageSize, whereFun, includeFun, orderByFun, true);
+                return base.GetPage(userSearch.PageIndex, userSearch.PageSize, whereFun, orderByFun, true);
             }
             catch (Exception e)
             {
@@ -248,7 +247,12 @@ namespace Services.SystemServices
         /// <returns></returns>
         public override QueryResultInfo<User> GetInfo(int uId)
         {
+            UserViewModel userViewModel = null;
+
             var user = base.GetInfo(uId).Data;
+
+            userViewModel = Mapper.Map<UserViewModel>(user);
+
             var userRole = UserRoleService.GetList(ur => ur.UserId == uId).Datas;
             user.RoleIds = userRole.Select(ur => ur.RoleId).ToArray();
             return new QueryResultInfo<User>()

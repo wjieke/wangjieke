@@ -193,7 +193,7 @@ namespace Services.SystemServices
             var resultInfo = new QueryResultInfo<Permission>() { ResultState = ResultState.Success, Message = "" };
             try
             {
-                var model = base.SingleOrDefault(m => m.Children, m => m.PermissionId == permissionId);
+                var model = base.SingleOrDefault(m => m.PermissionId == permissionId);
                 if (model != null)
                 {
                     var idList = GetIds(permissionId);
@@ -299,7 +299,7 @@ namespace Services.SystemServices
             //orderByFun = m => m.Sort;
             try
             {
-                return base.GetPage(o.PageIndex, o.PageSize, whereFun, null, orderByFun, true);
+                return base.GetPage(o.PageIndex, o.PageSize, whereFun, orderByFun, true);
             }
             catch (Exception ex)
             {
@@ -518,7 +518,7 @@ namespace Services.SystemServices
             var resultInfo = new QueryResultInfo<Permission>() { ResultState = ResultState.Success, Message = "" };
             try
             {
-                var model = await base.SingleOrDefaultAsync(m => m.Children, m => m.PermissionId == permissionId);
+                var model = await base.SingleOrDefaultAsync(m => m.PermissionId == permissionId);
                 if (model != null)
                 {
                     var idList = await GetIdsAsync(permissionId);
@@ -624,7 +624,7 @@ namespace Services.SystemServices
             //orderByFun = m => m.Sort;
             try
             {
-                return await base.GetPageAsync(o.PageIndex, o.PageSize, whereFun, null, orderByFun, true);
+                return await base.GetPageAsync(o.PageIndex, o.PageSize, whereFun, orderByFun, true);
             }
             catch (Exception ex)
             {

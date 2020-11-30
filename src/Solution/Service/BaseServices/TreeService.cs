@@ -14,7 +14,7 @@ namespace Services.BaseServices
     /// <typeparam name="TTreeModel">Tree结构模型类，必须继承TreeBase模型基类</typeparam>
     public class TreeService<TTreeModel> : BaseService<TTreeModel>, ITreeService<TTreeModel>
         where TTreeModel : TreeBase<TTreeModel>
-    {
+    {        
         #region 同步
 
         /// <summary>

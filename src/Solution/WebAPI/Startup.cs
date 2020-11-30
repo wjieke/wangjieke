@@ -37,6 +37,7 @@ namespace WebAPI
             services.ConfigureAddSwagger();
             services.ConfigureAddRoute();
             services.AddScoped<ModelValidationAttribute>();
+            services.AddAutoMapper();
         }
 
         /// <summary>

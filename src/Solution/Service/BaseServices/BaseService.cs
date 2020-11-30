@@ -1,4 +1,5 @@
-﻿using DbAccess.DbService;
+﻿using AutoMapper;
+using DbAccess.DbService;
 using IServices.IBaseServices;
 using Library.Tool;
 using Microsoft.AspNetCore.Http;
@@ -22,12 +23,23 @@ namespace Services.BaseServices
     /// 数据传输服务基类
     /// </summary>
     /// <typeparam name="TModel">泛型模型类</typeparam>
-    public abstract class BaseService<TModel> : DbService<TModel>, IBaseService<TModel> where TModel : class
+    public abstract class BaseService<TModel> : DbService<TModel>, IBaseService<TModel>
+        where TModel : class
+        //where TViewModel : class, new()
     {
         /// <summary>
         /// HTTP上下文访问器
         /// </summary>
         public IHttpContextAccessor HttpContextAccessor { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public IMapper Mapper { get; set; }
+
+        //public TreeService(IMapper mapper) {
+        //    this.Mapper = mapper;
+        //}
 
         /// <summary>
         /// 获取当前登录用户
@@ -61,7 +73,7 @@ namespace Services.BaseServices
             var resultInfo = new ActionResultInfo<TModel>() { ResultState = ResultState.Success, Message = "" };
             try
             {
-                int ret = base.DbExecuteAction(model,DbActionType.Add);
+                int ret = base.DbExecuteAction(model, DbActionType.Add);
                 if (ret > 0)
                 {
                     resultInfo.ResultState = ResultState.Success;
@@ -170,10 +182,13 @@ namespace Services.BaseServices
         /// <returns></returns>
         public virtual QueryResultInfo<TModel> GetInfo(int id)
         {
-            QueryResultInfo<TModel> resultInfo = new QueryResultInfo<TModel>() { ResultState = ResultState.Success, Message = "" };
+            QueryResultInfo<TModel> resultInfo = new QueryResultInfo<TModel>() { ResultState = ResultState.Success, Message = "" };           
             try
             {
+                //TViewModel viewModel =  new TViewModel();
                 var model = base.Find(id);
+                //viewModel = Mapper.Map<TViewModel>(model);
+
                 if (model != null)
                 {
                     resultInfo.ResultState = ResultState.Success;
@@ -198,14 +213,12 @@ namespace Services.BaseServices
         /// 查询所有信息
         /// </summary>
         /// <param name="whereFun"></param>
-        /// <param name="includeFun"></param>
         /// <param name="orderByFun"></param>
         /// <param name="isAsc"></param>
         /// <returns></returns>
-        public virtual QueryResultInfo<TModel> GetList(Expression<Func<TModel, bool>> whereFun = null, Expression<Func<TModel, List<TModel>>> includeFun = null,
-            Expression<Func<TModel, object>> orderByFun = null, bool isAsc = true)
+        public virtual QueryResultInfo<TModel> GetList(Expression<Func<TModel, bool>> whereFun = null, Expression<Func<TModel, object>> orderByFun = null, bool isAsc = true)
         {
-            List<TModel> list = base.QueryList(whereFun, includeFun, orderByFun, isAsc);
+            List<TModel> list = base.QueryList(whereFun, orderByFun, isAsc);
             QueryResultInfo<TModel> queryResultInfo = new QueryResultInfo<TModel>();
             if (list.Count > 0)
             {
@@ -227,17 +240,15 @@ namespace Services.BaseServices
         /// <param name="pageIndex">页索引</param>
         /// <param name="pageSize">页大小</param>
         /// <param name="whereFun">条件表达式</param>
-        /// <param name="includeFun">包含表达式</param>
         /// <param name="orderByFun">排序表达式</param>
         /// <param name="isAsc">是否升序降序</param>
-        /// <returns>对象集合json字符串</returns>
+        /// <returns>查询结果信息</returns>
         public virtual QueryResultInfo<TModel> GetPage(int pageIndex = 1, int pageSize = 10,
             Expression<Func<TModel, bool>> whereFun = null,
-            Expression<Func<TModel, object>> includeFun = null,
             Expression<Func<TModel, object>> orderByFun = null,
             bool isAsc = true)
         {
-            List<TModel> list = base.QueryPage(out int count, out int countPage, pageIndex, pageSize, whereFun, includeFun, orderByFun);
+            List<TModel> list = base.QueryPage(out int count, out int countPage, pageIndex, pageSize, whereFun, orderByFun);
             QueryResultInfo<TModel> queryResultInfo = new QueryResultInfo<TModel>();
             if (list.Count > 0)
             {
@@ -410,14 +421,12 @@ namespace Services.BaseServices
         /// 查询所有信息
         /// </summary>
         /// <param name="whereFun"></param>
-        /// <param name="includeFun"></param>
         /// <param name="orderByFun"></param>
         /// <param name="isAsc"></param>
-        /// <returns></returns>
-        public virtual async Task<QueryResultInfo<TModel>> GetListAsync(Expression<Func<TModel, bool>> whereFun = null, Expression<Func<TModel, List<TModel>>> includeFun = null,
-            Expression<Func<TModel, object>> orderByFun = null, bool isAsc = true)
+        /// <returns>对象集合</returns>
+        public virtual async Task<QueryResultInfo<TModel>> GetListAsync(Expression<Func<TModel, bool>> whereFun = null, Expression<Func<TModel, object>> orderByFun = null, bool isAsc = true)
         {
-            List<TModel> list = await base.QueryListAsync(whereFun, includeFun, orderByFun, isAsc);
+            List<TModel> list = await base.QueryListAsync(whereFun, orderByFun, isAsc);
             QueryResultInfo<TModel> queryResultInfo = new QueryResultInfo<TModel>();
             if (list.Count > 0)
             {
@@ -439,17 +448,15 @@ namespace Services.BaseServices
         /// <param name="pageIndex">页索引</param>
         /// <param name="pageSize">页大小</param>
         /// <param name="whereFun">条件表达式</param>
-        /// <param name="includeFun">包含表达式</param>
         /// <param name="orderByFun">排序表达式</param>
         /// <param name="isAsc">是否升序降序</param>
-        /// <returns>对象集合json字符串</returns>
+        /// <returns>元组数据</returns>
         public virtual async Task<QueryResultInfo<TModel>> GetPageAsync(int pageIndex = 1, int pageSize = 10,
             Expression<Func<TModel, bool>> whereFun = null,
-            Expression<Func<TModel, object>> includeFun = null,
             Expression<Func<TModel, object>> orderByFun = null,
             bool isAsc = true)
         {
-            ValueTuple<List<TModel>, int, int> tupleData = await base.QueryPageAsync(pageIndex, pageSize, whereFun, includeFun, orderByFun, isAsc);
+            ValueTuple<List<TModel>, int, int> tupleData = await base.QueryPageAsync(pageIndex, pageSize, whereFun, orderByFun, isAsc);
             QueryResultInfo<TModel> queryResultInfo = new QueryResultInfo<TModel>();
             if (tupleData.Item1.Count > 0)
             {
@@ -470,6 +477,5 @@ namespace Services.BaseServices
         #endregion
 
         #endregion
-
     }
 }

@@ -192,7 +192,7 @@ namespace Services.SystemServices
 
             try
             {
-                return base.GetPage(o.PageIndex, o.PageSize, whereFun, null, orderByFun, true);
+                return base.GetPage(o.PageIndex, o.PageSize, whereFun, orderByFun, true);
             }
             catch (Exception e)
             {

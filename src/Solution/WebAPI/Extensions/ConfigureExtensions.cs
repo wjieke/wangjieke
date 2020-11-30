@@ -1,4 +1,6 @@
-﻿using DbAccess.DbContext;
+﻿using AutoMapper;
+using DbAccess.DbContext;
+using Library.AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -229,5 +231,18 @@ namespace WebAPI.Extensions
             //    options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
             //});
         }
+
+
+        /// <summary>
+        /// 配置添加Automapper
+        /// </summary>
+        /// <param name="services"></param>
+        public static void AddAutoMapper(this IServiceCollection services)
+        {
+            if (services == null) throw new ArgumentNullException(nameof(services));
+            services.AddAutoMapper(typeof(AutoMapperConfig));
+            AutoMapperConfig.RegisterMappings();
+        }
+
     }
 }

@@ -58,12 +58,10 @@ namespace IServices.IBaseServices
         /// 查询所有信息
         /// </summary>
         /// <param name="whereFun"></param>
-        /// <param name="includeFun"></param>
         /// <param name="orderByFun"></param>
         /// <param name="isAsc"></param>
         /// <returns></returns>
-        QueryResultInfo<TModel> GetList(Expression<Func<TModel, bool>> whereFun = null, Expression<Func<TModel, List<TModel>>> includeFun = null,
-            Expression<Func<TModel, object>> orderByFun = null, bool isAsc = true);
+        QueryResultInfo<TModel> GetList(Expression<Func<TModel, bool>> whereFun = null, Expression<Func<TModel, object>> orderByFun = null, bool isAsc = true);
 
         /// <summary>
         /// 分页查询数据
@@ -71,13 +69,11 @@ namespace IServices.IBaseServices
         /// <param name="pageIndex">页索引</param>
         /// <param name="pageSize">页大小</param>
         /// <param name="whereFun">条件表达式</param>
-        /// <param name="includeFun">包含表达式</param>
         /// <param name="orderByFun">排序表达式</param>
         /// <param name="isAsc">是否升序降序</param>
         /// <returns>对象集合json字符串</returns>
         QueryResultInfo<TModel> GetPage(int pageIndex = 1, int pageSize = 10,
             Expression<Func<TModel, bool>> whereFun = null,
-            Expression<Func<TModel, object>> includeFun = null,
             Expression<Func<TModel, object>> orderByFun = null,
             bool isAsc = true);
 
@@ -127,12 +123,10 @@ namespace IServices.IBaseServices
         /// 查询所有信息
         /// </summary>
         /// <param name="whereFun"></param>
-        /// <param name="includeFun"></param>
         /// <param name="orderByFun"></param>
         /// <param name="isAsc"></param>
         /// <returns></returns>
-        Task<QueryResultInfo<TModel>> GetListAsync(Expression<Func<TModel, bool>> whereFun = null, Expression<Func<TModel, List<TModel>>> includeFun = null,
-            Expression<Func<TModel, object>> orderByFun = null, bool isAsc = true);
+        Task<QueryResultInfo<TModel>> GetListAsync(Expression<Func<TModel, bool>> whereFun = null, Expression<Func<TModel, object>> orderByFun = null, bool isAsc = true);
 
         /// <summary>
         /// 分页查询数据
@@ -140,13 +134,11 @@ namespace IServices.IBaseServices
         /// <param name="pageIndex">页索引</param>
         /// <param name="pageSize">页大小</param>
         /// <param name="whereFun">条件表达式</param>
-        /// <param name="includeFun">包含表达式</param>
         /// <param name="orderByFun">排序表达式</param>
         /// <param name="isAsc">是否升序降序</param>
-        /// <returns>对象集合json字符串</returns>
+        /// <returns>查询结果信息</returns>
         Task<QueryResultInfo<TModel>> GetPageAsync(int pageIndex = 1, int pageSize = 10,
             Expression<Func<TModel, bool>> whereFun = null,
-            Expression<Func<TModel, object>> includeFun = null,
             Expression<Func<TModel, object>> orderByFun = null,
             bool isAsc = true);
 

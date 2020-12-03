@@ -3,6 +3,7 @@ using Model.ModelDto;
 using Model.ModelSearch;
 using Model.Entity.System;
 using Model.ModelTool;
+using Model.ModelView;
 
 namespace IServices.ISystemServices
 {
@@ -13,7 +14,7 @@ namespace IServices.ISystemServices
         /// </summary>
         /// <param name="searchUser">搜索条件数据</param>
         /// <returns>Json数据集合</returns>
-        QueryResultInfo<User> GetPage(UserSearch userSearch);
+        QueryResultInfo<User> GetPage(UserSearchModel userSearch);
 
         /// <summary>
         /// 验证用户登录

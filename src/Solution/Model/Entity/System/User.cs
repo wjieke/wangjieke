@@ -7,7 +7,7 @@ using static Model.Enum.SystemEnum;
 namespace Model.Entity.System
 {
     /// <summary>
-    /// 用户实体类
+    /// 用户
     /// </summary>
     [Table("Sys_User")] //表映射，对应数据库指定的表名
     [Serializable] //可序列化类
@@ -91,6 +91,7 @@ namespace Model.Entity.System
         #endregion
 
         #region 导航属性
+
         /// <summary>
         /// 所属部门
         /// </summary>
@@ -99,15 +100,20 @@ namespace Model.Entity.System
         public virtual Department Department { get; set; }
 
         /// <summary>
-        /// 用户角色
+        /// 用户角色集合
         /// </summary>
         public virtual List<UserRole> UserRoles { get; set; } = new List<UserRole>();
 
         #endregion
 
         #region 数据传输
+
+        /// <summary>
+        /// 角色ID数组
+        /// </summary>
         [NotMapped]
         public int[] RoleIds { get; set; }
+
         #endregion
     }
 }

@@ -4,6 +4,7 @@ using Model.Entity.System;
 using Model.ModelTool;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Model.ModelView;
 
 namespace IServices.ISystemServices
 {
@@ -18,7 +19,7 @@ namespace IServices.ISystemServices
         /// </summary>
         /// <param name="roleSearch">搜索条件数据</param>
         /// <returns>Json数据集合</returns>
-        QueryResultInfo<Role> GetPage(RoleSearch roleSearch);
+        QueryResultInfo<Role> GetPage(RoleSearchModel roleSearch);
 
         /// <summary>
         /// 获取树结构数据
@@ -53,7 +54,7 @@ namespace IServices.ISystemServices
         /// </summary>
         /// <param name="roleSearch">搜索条件数据</param>
         /// <returns>Json数据集合</returns>
-        Task<QueryResultInfo<Role>> GetPageAsync(RoleSearch roleSearch);
+        Task<QueryResultInfo<Role>> GetPageAsync(RoleSearchModel roleSearch);
 
         /// <summary>
         /// 获取树结构数据

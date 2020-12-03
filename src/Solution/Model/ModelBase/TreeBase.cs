@@ -5,6 +5,10 @@ using System.Text.Json.Serialization;
 
 namespace Model.ModelBase
 {
+    /// <summary>
+    /// 树结构数据基类
+    /// </summary>
+    /// <typeparam name="TTreeModel"></typeparam>
     [Serializable]
     public abstract class TreeBase<TTreeModel> : SystemBase
     {

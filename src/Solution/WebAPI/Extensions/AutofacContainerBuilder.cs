@@ -45,9 +45,7 @@ namespace WebAPI.Extensions
             //builder.RegisterTypes(controllersTypesInAssembly).PropertiesAutowired();
 
 
-            //注册拦截器类
-            builder.RegisterType<AutofacServiceInterceptor>();
-
+            #region 注册注册AutoMapper
             //注册AutoMapper
             builder.Register(
                 c => new MapperConfiguration(cfg =>
@@ -60,8 +58,12 @@ namespace WebAPI.Extensions
             builder.Register(
                 c => c.Resolve<MapperConfiguration>().CreateMapper(c.Resolve))
                 .As<IMapper>()
-                .InstancePerLifetimeScope()
-                .PropertiesAutowired();
+                .InstancePerLifetimeScope();
+            //.PropertiesAutowired();
+            #endregion
+
+            //注册拦截器类
+            builder.RegisterType<AutofacServiceInterceptor>();
 
             var assembly = Assembly.Load("Service");
             builder.RegisterAssemblyTypes(assembly).Where(type => type.GetInterface("IBaseService`1") != null)

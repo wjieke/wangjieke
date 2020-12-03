@@ -12,9 +12,7 @@ namespace Library.AutoMapper
         public AutoMapperProfile()
         {
             CreateMap<User, UserViewModel>();
-            //CreateMap<Menu, MenuViewModel>();
-            //CreateMap<Permission, PermissionViewModel>();
-            //CreateMap<Role, RoleViewModel>();
+            CreateMap<UserViewModel, User>();
         }
     }
 }

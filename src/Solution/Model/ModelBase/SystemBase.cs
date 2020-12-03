@@ -5,6 +5,9 @@ using static Model.Enum.SystemEnum;
 
 namespace Model.ModelBase
 {
+    /// <summary>
+    /// 系统数据基类
+    /// </summary>
     [Serializable]
     public abstract class SystemBase : DataBase
     {

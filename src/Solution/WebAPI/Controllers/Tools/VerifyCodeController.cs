@@ -7,6 +7,9 @@ using System.IO;
 
 namespace WebAPI.Controllers.Tools
 {
+    /// <summary>
+    /// 验证码API控制器接口
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [EnableCors("any")]

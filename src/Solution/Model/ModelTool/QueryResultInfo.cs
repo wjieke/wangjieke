@@ -3,7 +3,7 @@
 namespace Model.ModelTool
 {
     /// <summary>
-    /// 查询结果信息
+    /// 查询结果返回信息
     /// </summary>
     /// <typeparam name="TModel"></typeparam>
     public class QueryResultInfo<TModel> : ActionResultInfo<TModel>

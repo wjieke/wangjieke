@@ -158,7 +158,7 @@ namespace Services.SystemServices
         /// </summary>
         /// <param name="userSearch">搜索条件数据</param>
         /// <returns>Json数据集合</returns>
-        public QueryResultInfo<User> GetPage(UserSearch userSearch)
+        public QueryResultInfo<User> GetPage(UserSearchModel userSearch)
         {
             //条件查询表达式
             Expression<Func<User, bool>> whereFun = null;

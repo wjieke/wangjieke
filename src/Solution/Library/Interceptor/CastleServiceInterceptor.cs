@@ -6,7 +6,7 @@ using System.Text;
 namespace Library.Interceptor
 {
     /// <summary>
-    /// 暂时未用
+    /// 暂时未用（拦截器）
     /// </summary>
     public class CastleServiceInterceptor: StandardInterceptor
     {

@@ -3,6 +3,7 @@ using Model.ModelSearch;
 using Model.Entity.System;
 using System.Collections.Generic;
 using Model.ModelTool;
+using Model.ModelView;
 
 namespace IServices.ISystemServices
 {
@@ -15,7 +16,7 @@ namespace IServices.ISystemServices
         /// </summary>
         /// <param name="searchMenu">搜索条件数据</param>
         /// <returns>Json数据集合</returns>
-        QueryResultInfo<Menu> GetPage(MenuSearch menuSearch);
+        QueryResultInfo<Menu> GetPage(MenuSearchModel menuSearch);
 
         /// <summary>
         /// 获取树节点路径

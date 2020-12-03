@@ -7,9 +7,14 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Controllers.Bases
 {
-    public abstract class TreeController<TTreeModel, TService> : BaseController<TTreeModel, TService>
+    /// <summary>
+    /// 树结构数据API控制器基类
+    /// </summary>
+    /// <typeparam name="TTreeModel">泛型树模型</typeparam>
+    /// <typeparam name="TIService">泛型接口服务</typeparam>
+    public abstract class TreeController<TTreeModel, TIService> : BaseController<TTreeModel, TIService>
         where TTreeModel : TreeBase<TTreeModel>
-        where TService : ITreeService<TTreeModel>
+        where TIService : ITreeService<TTreeModel>
     {
         #region 同步
 

@@ -1,5 +1,8 @@
 ﻿namespace Model.ModelBase
 {
+    /// <summary>
+    /// 搜索基类
+    /// </summary>
     public abstract class SearchBase
     {
         /// <summary>

@@ -13,6 +13,9 @@ using WebAPI.Filters;
 
 namespace WebAPI
 {
+    /// <summary>
+    /// 程序启动类
+    /// </summary>
     public class Startup
     {
         private readonly string Any = "any";

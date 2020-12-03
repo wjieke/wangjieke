@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace WebAPI.Controllers
 {
-    //启动浏览器：api/values
+    //启动浏览器默认：api/values
 
     [Route("api/[controller]")]
     [ApiController]

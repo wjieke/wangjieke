@@ -1,7 +1,7 @@
 ﻿namespace Model.ModelTool
 {
     /// <summary>
-    /// 操作方法配置类
+    /// 数据库命令执行操作方法配置类
     /// </summary>
     public class OperateMethodSetting
     {

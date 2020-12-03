@@ -3,6 +3,7 @@ using Model.ModelSearch;
 using Model.Entity.System;
 using Model.ModelTool;
 using System.Collections.Generic;
+using Model.ModelView;
 
 namespace IServices.ISystemServices
 {
@@ -15,7 +16,7 @@ namespace IServices.ISystemServices
         /// </summary>
         /// <param name="searchArea">搜索条件数据</param>
         /// <returns>Json数据集合</returns>
-        QueryResultInfo<Department> GetPage(DepartmentSearch searchDepartment);
+        QueryResultInfo<Department> GetPage(DepartmentSearchModel searchDepartment);
 
 
         /// <summary>

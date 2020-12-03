@@ -85,6 +85,8 @@ namespace DbAccess.Extensions
 
         }
 
+        #region 未使用
+
         /// <summary>
         /// 实体映射配置
         /// </summary>
@@ -108,5 +110,8 @@ namespace DbAccess.Extensions
 
             }
         }
+
+        #endregion
+
     }
 }

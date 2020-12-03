@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Model.Entity.System;
 using Model.ModelSearch;
 using Model.ModelTool;
+using Model.ModelView;
 using Services.BaseServices;
 using System;
 using System.Collections.Generic;
@@ -174,7 +175,7 @@ namespace Services.SystemServices
         /// </summary>
         /// <param name="o">搜索条件数据</param>
         /// <returns>Json数据集合</returns>
-        public QueryResultInfo<Department> GetPage(DepartmentSearch o)
+        public QueryResultInfo<Department> GetPage(DepartmentSearchModel o)
         {
             #region "多条件过滤查询"
 

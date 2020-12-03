@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Model.Entity.System;
 using Model.ModelSearch;
 using Model.ModelTool;
+using Model.ModelView;
 using Services.BaseServices;
 using System;
 using System.Collections.Generic;
@@ -178,7 +179,7 @@ namespace Services.SystemServices
         /// </summary>
         /// <param name="o">搜索条件数据</param>
         /// <returns>Json数据集合</returns>
-        public QueryResultInfo<Menu> GetPage(MenuSearch o)
+        public QueryResultInfo<Menu> GetPage(MenuSearchModel o)
         {
             //条件查询表达式
             Expression<Func<Menu, bool>> whereFun = null;

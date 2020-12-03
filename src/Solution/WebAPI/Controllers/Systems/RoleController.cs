@@ -5,9 +5,13 @@ using Model.Entity.System;
 using Model.ModelTool;
 using System.Collections.Generic;
 using WebAPI.Controllers.Bases;
+using Model.ModelView;
 
 namespace WebAPI.Controllers.Systems
 {
+    /// <summary>
+    /// 角色API控制器
+    /// </summary>
     public class RoleController : TreeController<Role, IRoleService>
     {
         public IRoleService RoleService { get; set; }
@@ -20,7 +24,7 @@ namespace WebAPI.Controllers.Systems
         /// <param name="o">搜索条件数据</param>
         /// <returns>Json数据集合</returns>
         [HttpPost("GetPage")]
-        public QueryResultInfo<Role> GetPage(RoleSearch o)
+        public QueryResultInfo<Role> GetPage(RoleSearchModel o)
         {
             return RoleService.GetPage(o);
         }

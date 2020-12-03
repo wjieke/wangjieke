@@ -6,14 +6,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Model.Entity.System;
-using Model.Enum;
 using Model.ModelTool;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text.Encodings.Web;
-using System.Text.Json;
-using System.Text.Unicode;
 using System.Threading.Tasks;
 using static Model.Enum.SystemEnum;
 
@@ -25,7 +21,6 @@ namespace Services.BaseServices
     /// <typeparam name="TModel">泛型模型类</typeparam>
     public abstract class BaseService<TModel> : DbService<TModel>, IBaseService<TModel>
         where TModel : class
-        //where TViewModel : class, new()
     {
         /// <summary>
         /// HTTP上下文访问器
@@ -33,13 +28,10 @@ namespace Services.BaseServices
         public IHttpContextAccessor HttpContextAccessor { get; set; }
 
         /// <summary>
-        /// 
+        /// AutoMapper
         /// </summary>
         public IMapper Mapper { get; set; }
 
-        //public TreeService(IMapper mapper) {
-        //    this.Mapper = mapper;
-        //}
 
         /// <summary>
         /// 获取当前登录用户
@@ -182,13 +174,10 @@ namespace Services.BaseServices
         /// <returns></returns>
         public virtual QueryResultInfo<TModel> GetInfo(int id)
         {
-            QueryResultInfo<TModel> resultInfo = new QueryResultInfo<TModel>() { ResultState = ResultState.Success, Message = "" };           
+            QueryResultInfo<TModel> resultInfo = new QueryResultInfo<TModel>() { ResultState = ResultState.Success, Message = "" };
             try
             {
-                //TViewModel viewModel =  new TViewModel();
                 var model = base.Find(id);
-                //viewModel = Mapper.Map<TViewModel>(model);
-
                 if (model != null)
                 {
                     resultInfo.ResultState = ResultState.Success;
@@ -208,6 +197,42 @@ namespace Services.BaseServices
             }
             return resultInfo;
         }
+
+        /// <summary>
+        /// 根据ID查询信息(返回视图模型)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>视图模型</returns>
+        //public virtual QueryResultInfo<TViewModel> GetInfoViewModel(int id)
+        //{
+        //    QueryResultInfo<TViewModel> resultInfo = new QueryResultInfo<TViewModel>() { ResultState = ResultState.Success, Message = "" };
+        //    try
+        //    {
+        //        TViewModel viewModel = null;
+        //        var model = base.Find(id);
+        //        if (model != null)
+        //        {
+        //            viewModel = Mapper.Map<TViewModel>(model);
+        //            if (viewModel != null)
+        //            {
+        //                resultInfo.ResultState = ResultState.Success;
+        //                resultInfo.Message = "成功";
+        //                resultInfo.Data = viewModel;
+        //            }
+        //            else
+        //            {
+        //                resultInfo.ResultState = ResultState.Failure;
+        //                resultInfo.Message = "失败";
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        resultInfo.ResultState = ResultState.Error;
+        //        resultInfo.Message = "错误" + ex.Message;
+        //    }
+        //    return resultInfo;
+        //}
 
         /// <summary>
         /// 查询所有信息
@@ -416,6 +441,42 @@ namespace Services.BaseServices
             }
             return resultInfo;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        //public virtual async Task<QueryResultInfo<TViewModel>> GetInfoViewModelAsync(int id)
+        //{
+        //    QueryResultInfo<TViewModel> resultInfo = new QueryResultInfo<TViewModel>() { ResultState = ResultState.Success, Message = "" };
+        //    try
+        //    {
+        //        TViewModel viewModel = null;
+        //        var model = await base.FindAsync(id);
+        //        if (model != null)
+        //        {
+        //            viewModel = Mapper.Map<TViewModel>(model);
+        //            if (viewModel != null)
+        //            {
+        //                resultInfo.ResultState = ResultState.Success;
+        //                resultInfo.Message = "成功";
+        //                resultInfo.Data = viewModel;
+        //            }
+        //            else
+        //            {
+        //                resultInfo.ResultState = ResultState.Failure;
+        //                resultInfo.Message = "失败";
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        resultInfo.ResultState = ResultState.Error;
+        //        resultInfo.Message = "错误" + ex.Message;
+        //    }
+        //    return resultInfo;
+        //}
 
         /// <summary>
         /// 查询所有信息

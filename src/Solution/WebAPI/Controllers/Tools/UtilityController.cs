@@ -9,12 +9,24 @@ using static Model.Enum.SystemEnum;
 
 namespace WebAPI.Controllers.Tools
 {
+    /// <summary>
+    /// 公共API控制器接口
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [EnableCors("any")]   //启用跨域（设置跨域处理的代理）
     public class UtilityController : ControllerBase
     {
+        #region 枚举列表接口
+
+        /// <summary>
+        /// 数据状态
+        /// </summary>
         private DataState DataState { get; set; }
+
+        /// <summary>
+        /// 性别类型
+        /// </summary>
         private SexType SexType { get; set; }
 
         /// <summary>
@@ -46,5 +58,7 @@ namespace WebAPI.Controllers.Tools
         {
             return SexType.GetEnumList().Where(i => i.Value != (Convert.ToInt32(SexType.Unknown))).ToList();
         }
+
+        #endregion
     }
 }

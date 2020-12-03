@@ -204,7 +204,7 @@ namespace Services.SystemServices
         /// </summary>
         /// <param name="o">搜索条件数据</param>
         /// <returns>Json数据集合</returns>
-        public QueryResultInfo<Role> GetPage(RoleSearch o)
+        public QueryResultInfo<Role> GetPage(RoleSearchModel o)
         {
             //条件查询表达式
             Expression<Func<Role, bool>> whereFun = null;
@@ -497,7 +497,7 @@ namespace Services.SystemServices
         /// </summary>
         /// <param name="o">搜索条件数据</param>
         /// <returns>Json数据集合</returns>
-        public async Task<QueryResultInfo<Role>> GetPageAsync(RoleSearch o)
+        public async Task<QueryResultInfo<Role>> GetPageAsync(RoleSearchModel o)
         {
             //条件查询表达式
             Expression<Func<Role, bool>> whereFun = null;

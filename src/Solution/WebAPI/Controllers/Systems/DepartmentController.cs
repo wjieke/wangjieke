@@ -5,9 +5,13 @@ using Model.Entity.System;
 using System.Collections.Generic;
 using WebAPI.Controllers.Bases;
 using Model.ModelTool;
+using Model.ModelView;
 
 namespace WebAPI.Controllers.Systems
 {
+    /// <summary>
+    /// 部门API控制器
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class DepartmentController : TreeController<Department, IDepartmentService>
@@ -22,7 +26,7 @@ namespace WebAPI.Controllers.Systems
         /// <param name="o">搜索条件数据</param>
         /// <returns>Json数据集合</returns>
         [HttpPost("GetPage")]
-        public QueryResultInfo<Department> GetPage(DepartmentSearch o)
+        public QueryResultInfo<Department> GetPage(DepartmentSearchModel o)
         {
             return DepartmentService.GetPage(o);
         }

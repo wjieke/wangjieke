@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace IServices.IBaseServices
 {
-
     /// <summary>
     /// 数据传输服务基类接口
     /// </summary>
     /// <typeparam name="TModel">泛型模型类</typeparam>
     [Intercept(typeof(AutofacServiceInterceptor))] //启用服务拦截器（继承该基类的所有服务类都启用拦截器）
-    public interface IBaseService<TModel> : IDbService<TModel> where TModel : class
+    public interface IBaseService<TModel> : IDbService<TModel>
+        where TModel : class
     {
         #region 同步
 
@@ -53,6 +53,13 @@ namespace IServices.IBaseServices
         /// <param name="id"></param>
         /// <returns></returns>
         QueryResultInfo<TModel> GetInfo(int id);
+
+        /// <summary>
+        /// 根据ID查询信息(返回视图模型)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        //QueryResultInfo<TViewModel> GetInfoViewModel(int id);
 
         /// <summary>
         /// 查询所有信息
@@ -118,6 +125,13 @@ namespace IServices.IBaseServices
         /// <param name="id"></param>
         /// <returns></returns>
         Task<QueryResultInfo<TModel>> GetInfoAsync(int id);
+
+        /// <summary>
+        /// 根据ID查询信息(返回视图模型)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        //Task<QueryResultInfo<TViewModel>> GetInfoViewModelAsync(int id);
 
         /// <summary>
         /// 查询所有信息

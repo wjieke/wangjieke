@@ -7,15 +7,20 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Controllers.Bases
 {
+    /// <summary>
+    /// API控制器基类
+    /// </summary>
+    /// <typeparam name="TModel">泛型模型</typeparam>
+    /// <typeparam name="TIService">泛型接口服务</typeparam>
     [Route("api/[controller]")]
     [ApiController]
     [EnableCors("any")] //启用跨域（设置跨域处理的代理）
     [Authorize]         //启用jwt验证 (添加Authorize标签，可以加在方法上，也可以加在类上，[AllowAnonymous] 标记此接口方法不需要身份验证)
-    public abstract class BaseController<TModel, TService> : ControllerBase
+    public abstract class BaseController<TModel, TIService> : ControllerBase
         where TModel : class
-        where TService : IBaseService<TModel>
+        where TIService : IBaseService<TModel>
     {
-        public TService Service { get; set; }
+        public TIService Service { get; set; }
 
         #region 同步
 

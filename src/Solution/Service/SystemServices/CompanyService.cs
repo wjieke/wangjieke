@@ -2,6 +2,7 @@
 using Model.Entity.System;
 using Model.ModelSearch;
 using Model.ModelTool;
+using Model.ModelView;
 using Services.BaseServices;
 using System;
 using System.Linq.Expressions;
@@ -60,7 +61,7 @@ namespace Services.SystemServices
         /// </summary>
         /// <param name="searchCompany">搜索条件数据</param>
         /// <returns>Json数据集合</returns>
-        public QueryResultInfo<Company> GetPage(CompanySearch companySearch)
+        public QueryResultInfo<Company> GetPage(CompanySearchModel companySearch)
         {
             //条件查询表达式
             Expression<Func<Company, bool>> whereFun = null;
@@ -129,7 +130,7 @@ namespace Services.SystemServices
         /// </summary>
         /// <param name="companySearch">搜索条件数据</param>
         /// <returns>Json数据集合</returns>
-        public async Task<QueryResultInfo<Company>> GetPageAsync(CompanySearch companySearch)
+        public async Task<QueryResultInfo<Company>> GetPageAsync(CompanySearchModel companySearch)
         {
             //条件查询表达式
             Expression<Func<Company, bool>> whereFun = null;

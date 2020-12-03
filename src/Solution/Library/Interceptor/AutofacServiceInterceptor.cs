@@ -3,10 +3,8 @@ using Library.Attributes;
 using Library.Tool;
 using Microsoft.Extensions.Caching.Memory;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Transactions;
 
 namespace Library.Interceptor

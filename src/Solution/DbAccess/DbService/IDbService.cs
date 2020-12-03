@@ -6,6 +6,10 @@ using static Model.Enum.SystemEnum;
 
 namespace DbAccess.DbService
 {
+    /// <summary>
+    /// 数据上下文服务接口
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
     public interface IDbService<TModel> where TModel : class
     {
         #region 同步

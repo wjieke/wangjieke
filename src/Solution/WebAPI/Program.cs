@@ -4,6 +4,9 @@ using Microsoft.Extensions.Hosting;
 
 namespace WebAPI
 {
+    /// <summary>
+    /// 程序入口类
+    /// </summary>
     public class Program
     {
         public static void Main(string[] args)

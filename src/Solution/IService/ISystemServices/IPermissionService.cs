@@ -4,6 +4,7 @@ using Model.Entity.System;
 using Model.ModelTool;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Model.ModelView;
 
 namespace IServices.ISystemServices
 {
@@ -43,7 +44,7 @@ namespace IServices.ISystemServices
 
         List<Permission> GetPath(string id = null);
 
-        QueryResultInfo<Permission> GetPage(PermissionSearch permissionSearch);
+        QueryResultInfo<Permission> GetPage(PermissionSearchModel permissionSearch);
 
         List<Permission> GetNode(string parentId = null);
 
@@ -87,7 +88,7 @@ namespace IServices.ISystemServices
 
         Task<List<Permission>> GetPathAsync(string id = null);
 
-        Task<QueryResultInfo<Permission>> GetPageAsync(PermissionSearch permissionSearch);
+        Task<QueryResultInfo<Permission>> GetPageAsync(PermissionSearchModel permissionSearch);
 
         Task<List<Permission>> GetNodeAsync(string parentId = null);
 

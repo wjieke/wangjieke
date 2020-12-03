@@ -6,9 +6,13 @@ using Model.ModelSearch;
 using Model.Entity.System;
 using Model.ModelTool;
 using WebAPI.Controllers.Bases;
+using Model.ModelView;
 
 namespace WebAPI.Controllers.Systems
 {
+    /// <summary>
+    /// 用户API控制器
+    /// </summary>
     public class UserController : BaseController<User, IUserService>
     {
         /// <summary>
@@ -17,7 +21,7 @@ namespace WebAPI.Controllers.Systems
         /// <param name="o">搜索条件数据</param>
         /// <returns>Json数据集合</returns>
         [HttpPost("GetPage")]
-        public QueryResultInfo<User> GetPage(UserSearch o)
+        public QueryResultInfo<User> GetPage(UserSearchModel o)
         {
             return Service.GetPage(o);
         }

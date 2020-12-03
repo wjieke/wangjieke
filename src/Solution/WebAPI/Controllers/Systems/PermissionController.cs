@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Controllers.Systems
 {
+    /// <summary>
+    /// 权限API控制器
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     [EnableCors("any")]     //启用跨域（设置跨域处理的代理）
@@ -85,7 +88,7 @@ namespace WebAPI.Controllers.Systems
         /// <param name="o">搜索条件数据</param>
         /// <returns>Json数据集合</returns>
         [HttpPost("GetPage")]
-        public QueryResultInfo<Permission> GetPage(PermissionSearch o)
+        public QueryResultInfo<Permission> GetPage(PermissionSearchModel o)
         {
             return PermissionService.GetPage(o);
         }

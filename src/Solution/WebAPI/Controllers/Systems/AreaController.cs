@@ -5,9 +5,13 @@ using Model.Entity.System;
 using System.Collections.Generic;
 using WebAPI.Controllers.Bases;
 using Model.ModelTool;
+using Model.ModelView;
 
 namespace WebAPI.Controllers.Systems
 {
+    /// <summary>
+    /// 地区API控制器
+    /// </summary>
     public class AreaController : TreeController<Area, IAreaService>
     {
         public IAreaService AreaService { get; set; }
@@ -20,7 +24,7 @@ namespace WebAPI.Controllers.Systems
         /// <param name="o">搜索条件数据</param>
         /// <returns>Json数据集合</returns>
         [HttpPost("GetPage")]
-        public QueryResultInfo<Area> GetPage(AreaSearch o)
+        public QueryResultInfo<Area> GetPage(AreaSearchModel o)
         {
             return AreaService.GetPage(o);
         }

@@ -15,6 +15,9 @@ using static Model.Enum.SystemEnum;
 
 namespace Services.SystemServices
 {
+    /// <summary>
+    /// 权限服务类
+    /// </summary>
     public class PermissionService : BaseService<Permission>, IPermissionService
     {
         #region 同步
@@ -283,24 +286,24 @@ namespace Services.SystemServices
         }
 
         /// <summary>
-        /// 查询 [分页数据]
+        /// 查询分页数据
         /// </summary>
-        /// <param name="o">搜索条件数据</param>
-        /// <returns>Json数据集合</returns>
-        public QueryResultInfo<Permission> GetPage(PermissionSearchModel o)
+        /// <param name="searchModel">搜索条件数据</param>
+        /// <returns>查询结果信息</returns>
+        public QueryResultInfo<Permission> GetPage(PermissionSearchModel searchModel)
         {
             //条件查询表达式
             Expression<Func<Permission, bool>> whereFun = null;
             //if (!string.IsNullOrEmpty(o.ParentId)) { whereFun = m => m.ParentId == o.ParentId; }
-            whereFun = m => m.ParentId.Equals(o.ParentId);
-            if (!string.IsNullOrEmpty(o.PermissionName)) { whereFun = m => m.PermissionName.Contains(o.PermissionName); }
+            whereFun = m => m.ParentId.Equals(searchModel.ParentId);
+            if (!string.IsNullOrEmpty(searchModel.PermissionName)) { whereFun = m => m.PermissionName.Contains(searchModel.PermissionName); }
 
             //排序表达式
             Expression<Func<Permission, object>> orderByFun = null;
             //orderByFun = m => m.Sort;
             try
             {
-                return base.GetPage(o.PageIndex, o.PageSize, whereFun, orderByFun, true);
+                return base.GetPage(searchModel.PageIndex, searchModel.PageSize, whereFun, orderByFun, true);
             }
             catch (Exception ex)
             {
@@ -608,24 +611,24 @@ namespace Services.SystemServices
         }
 
         /// <summary>
-        /// 查询 [分页数据]
+        /// 查询分页数据
         /// </summary>
-        /// <param name="o">搜索条件数据</param>
-        /// <returns>Json数据集合</returns>
-        public async Task<QueryResultInfo<Permission>> GetPageAsync(PermissionSearchModel o)
+        /// <param name="searchModel">搜索条件数据</param>
+        /// <returns>查询结果信息</returns>
+        public async Task<QueryResultInfo<Permission>> GetPageAsync(PermissionSearchModel searchModel)
         {
             //条件查询表达式
             Expression<Func<Permission, bool>> whereFun = null;
             //if (!string.IsNullOrEmpty(o.ParentId)) { whereFun = m => m.ParentId == o.ParentId; }
-            whereFun = m => m.ParentId.Equals(o.ParentId);
-            if (!string.IsNullOrEmpty(o.PermissionName)) { whereFun = m => m.PermissionName.Contains(o.PermissionName); }
+            whereFun = m => m.ParentId.Equals(searchModel.ParentId);
+            if (!string.IsNullOrEmpty(searchModel.PermissionName)) { whereFun = m => m.PermissionName.Contains(searchModel.PermissionName); }
 
             //排序表达式
             Expression<Func<Permission, object>> orderByFun = null;
             //orderByFun = m => m.Sort;
             try
             {
-                return await base.GetPageAsync(o.PageIndex, o.PageSize, whereFun, orderByFun, true);
+                return await base.GetPageAsync(searchModel.PageIndex, searchModel.PageSize, whereFun, orderByFun, true);
             }
             catch (Exception ex)
             {

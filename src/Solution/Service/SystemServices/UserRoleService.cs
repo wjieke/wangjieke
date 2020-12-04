@@ -5,6 +5,9 @@ using Services.BaseServices;
 
 namespace Service.SystemServices
 {
+    /// <summary>
+    /// 用户角色服务类
+    /// </summary>
     public class UserRoleService : BaseService<UserRole>, IUserRoleService
     {
 

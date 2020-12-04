@@ -11,6 +11,9 @@ using static Model.Enum.SystemEnum;
 
 namespace Services.SystemServices
 {
+    /// <summary>
+    /// 公司服务类
+    /// </summary>
     public class CompanyService : BaseService<Company>, ICompanyService
     {
         #region 同步
@@ -57,15 +60,15 @@ namespace Services.SystemServices
         }
 
         /// <summary>
-        /// 查询(分页数据)
+        /// 查询分页数据
         /// </summary>
-        /// <param name="searchCompany">搜索条件数据</param>
-        /// <returns>Json数据集合</returns>
-        public QueryResultInfo<Company> GetPage(CompanySearchModel companySearch)
+        /// <param name="searchModel">搜索条件数据</param>
+        /// <returns>查询结果信息</returns>
+        public QueryResultInfo<Company> GetPage(CompanySearchModel searchModel)
         {
             //条件查询表达式
             Expression<Func<Company, bool>> whereFun = null;
-            if (!string.IsNullOrEmpty(companySearch.CompanyName)) { whereFun = m => m.CompanyName.Contains(companySearch.CompanyName); }
+            if (!string.IsNullOrEmpty(searchModel.CompanyName)) { whereFun = m => m.CompanyName.Contains(searchModel.CompanyName); }
 
             //排序表达式
             Expression<Func<Company, object>> orderByFun = null;
@@ -73,7 +76,7 @@ namespace Services.SystemServices
 
             try
             {
-                return base.GetPage(companySearch.PageIndex, companySearch.PageSize, whereFun);
+                return base.GetPage(searchModel.PageIndex, searchModel.PageSize, whereFun);
             }
             catch (Exception e)
             {
@@ -126,15 +129,15 @@ namespace Services.SystemServices
         }
 
         /// <summary>
-        /// 查询(分页数据)
+        /// 查询分页数据
         /// </summary>
-        /// <param name="companySearch">搜索条件数据</param>
-        /// <returns>Json数据集合</returns>
-        public async Task<QueryResultInfo<Company>> GetPageAsync(CompanySearchModel companySearch)
+        /// <param name="searchModel">搜索条件数据</param>
+        /// <returns>查询结果信息</returns>
+        public async Task<QueryResultInfo<Company>> GetPageAsync(CompanySearchModel searchModel)
         {
             //条件查询表达式
             Expression<Func<Company, bool>> whereFun = null;
-            if (!string.IsNullOrEmpty(companySearch.CompanyName)) { whereFun = m => m.CompanyName.Contains(companySearch.CompanyName); }
+            if (!string.IsNullOrEmpty(searchModel.CompanyName)) { whereFun = m => m.CompanyName.Contains(searchModel.CompanyName); }
 
             //排序表达式
             Expression<Func<Company, object>> orderByFun = null;
@@ -142,7 +145,7 @@ namespace Services.SystemServices
 
             try
             {
-                return await base.GetPageAsync(companySearch.PageIndex, companySearch.PageSize, whereFun);
+                return await base.GetPageAsync(searchModel.PageIndex, searchModel.PageSize, whereFun);
             }
             catch (Exception e)
             {

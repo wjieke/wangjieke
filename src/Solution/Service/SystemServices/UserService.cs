@@ -21,6 +21,9 @@ using static Model.Enum.SystemEnum;
 
 namespace Services.SystemServices
 {
+    /// <summary>
+    /// 用户服务类
+    /// </summary>
     public class UserService : BaseService<User>, IUserService
     {
         private readonly JwtSetting _jwtSetting;
@@ -154,28 +157,28 @@ namespace Services.SystemServices
         }
 
         /// <summary>
-        /// 查询(分页数据)
+        /// 查询分页数据
         /// </summary>
-        /// <param name="userSearch">搜索条件数据</param>
-        /// <returns>Json数据集合</returns>
-        public QueryResultInfo<User> GetPage(UserSearchModel userSearch)
+        /// <param name="searchModel">搜索条件数据</param>
+        /// <returns>查询结果信息</returns>
+        public QueryResultInfo<User> GetPage(UserSearchModel searchModel)
         {
             //条件查询表达式
             Expression<Func<User, bool>> whereFun = null;
-            if (!string.IsNullOrEmpty(userSearch.UserName))
+            if (!string.IsNullOrEmpty(searchModel.UserName))
             {
-                whereFun = m => m.UserName.Contains(userSearch.UserName);
+                whereFun = m => m.UserName.Contains(searchModel.UserName);
             }
-            if (userSearch.Birthday != null)
+            if (searchModel.Birthday != null)
             {
-                whereFun = m => m.Birthday.Equals(userSearch.Birthday);
+                whereFun = m => m.Birthday.Equals(searchModel.Birthday);
             }
             //排序表达式
             Expression<Func<User, object>> orderByFun = null;
             orderByFun = m => m.Id;
             try
             {
-                return base.GetPage(userSearch.PageIndex, userSearch.PageSize, whereFun, orderByFun, true);
+                return base.GetPage(searchModel.PageIndex, searchModel.PageSize, whereFun, orderByFun, true);
             }
             catch (Exception e)
             {
@@ -250,7 +253,7 @@ namespace Services.SystemServices
             UserViewModel userViewModel = null;
 
             var user = base.GetInfo(uId).Data;
-
+            //AutoMap模型映射
             userViewModel = Mapper.Map<UserViewModel>(user);
 
             var userRole = UserRoleService.GetList(ur => ur.UserId == uId).Datas;

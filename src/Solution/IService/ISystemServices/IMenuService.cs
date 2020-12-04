@@ -12,11 +12,11 @@ namespace IServices.ISystemServices
         #region 查询
 
         /// <summary>
-        /// 查询(分页数据)
+        /// 查询分页数据
         /// </summary>
-        /// <param name="searchMenu">搜索条件数据</param>
-        /// <returns>Json数据集合</returns>
-        QueryResultInfo<Menu> GetPage(MenuSearchModel menuSearch);
+        /// <param name="searchModel">搜索条件数据</param>
+        /// <returns>查询结果信息</returns>
+        QueryResultInfo<Menu> GetPage(MenuSearchModel searchModel);
 
         /// <summary>
         /// 获取树节点路径

@@ -127,6 +127,7 @@
     <Folder Include="src\assets\icon\" />
     <Folder Include="src\assets\img\" />
     <Folder Include="src\components\" />
+    <Folder Include="src\components\blog\" />
     <Folder Include="src\components\news\" />
     <Folder Include="src\components\layout\" />
     <Folder Include="src\components\system\" />

@@ -7,14 +7,17 @@ using Model.ModelView;
 
 namespace IServices.ISystemServices
 {
+    /// <summary>
+    /// 用户服务接口
+    /// </summary>
     public interface IUserService : IBaseService<User>
     {
         /// <summary>
-        /// 查询(分页数据)
+        /// 查询分页数据
         /// </summary>
-        /// <param name="searchUser">搜索条件数据</param>
-        /// <returns>Json数据集合</returns>
-        QueryResultInfo<User> GetPage(UserSearchModel userSearch);
+        /// <param name="searchModel">搜索条件数据</param>
+        /// <returns>查询结果信息</returns>
+        QueryResultInfo<User> GetPage(UserSearchModel searchModel);
 
         /// <summary>
         /// 验证用户登录

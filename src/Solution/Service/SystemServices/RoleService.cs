@@ -15,6 +15,9 @@ using static Model.Enum.SystemEnum;
 
 namespace Services.SystemServices
 {
+    /// <summary>
+    /// 角色服务类
+    /// </summary>
     public class RoleService : TreeService<Role>, IRoleService
     {
         public IRolePermissionService RolePermissionService { get; set; }
@@ -200,17 +203,17 @@ namespace Services.SystemServices
         #region 查询
 
         /// <summary>
-        /// 查询(分页数据)
+        /// 查询分页数据
         /// </summary>
-        /// <param name="o">搜索条件数据</param>
-        /// <returns>Json数据集合</returns>
-        public QueryResultInfo<Role> GetPage(RoleSearchModel o)
+        /// <param name="searchModel">搜索条件数据</param>
+        /// <returns>查询结果信息</returns>
+        public QueryResultInfo<Role> GetPage(RoleSearchModel searchModel)
         {
             //条件查询表达式
             Expression<Func<Role, bool>> whereFun = null;
-            whereFun = m => m.ParentId == o.ParentId;
+            whereFun = m => m.ParentId == searchModel.ParentId;
             //if (o.ParentId.HasValue) { whereFun = m => m.ParentId == o.ParentId; }
-            if (!string.IsNullOrEmpty(o.RoleName)) { whereFun = m => m.RoleName.Contains(o.RoleName); }
+            if (!string.IsNullOrEmpty(searchModel.RoleName)) { whereFun = m => m.RoleName.Contains(searchModel.RoleName); }
 
             //排序表达式
             Expression<Func<Role, object>> orderByFun = null;
@@ -218,7 +221,7 @@ namespace Services.SystemServices
 
             try
             {
-                return base.GetPage(o.PageIndex, o.PageSize, whereFun, orderByFun, true);
+                return base.GetPage(searchModel.PageIndex, searchModel.PageSize, whereFun, orderByFun, true);
             }
             catch (Exception e)
             {
@@ -493,17 +496,17 @@ namespace Services.SystemServices
         #region 查询
 
         /// <summary>
-        /// 查询(分页数据)
+        /// 查询分页数据
         /// </summary>
-        /// <param name="o">搜索条件数据</param>
-        /// <returns>Json数据集合</returns>
-        public async Task<QueryResultInfo<Role>> GetPageAsync(RoleSearchModel o)
+        /// <param name="searchModel">搜索条件数据</param>
+        /// <returns>查询结果信息</returns>
+        public async Task<QueryResultInfo<Role>> GetPageAsync(RoleSearchModel searchModel)
         {
             //条件查询表达式
             Expression<Func<Role, bool>> whereFun = null;
-            whereFun = m => m.ParentId == o.ParentId;
+            whereFun = m => m.ParentId == searchModel.ParentId;
             //if (o.ParentId.HasValue) { whereFun = m => m.ParentId == o.ParentId; }
-            if (!string.IsNullOrEmpty(o.RoleName)) { whereFun = m => m.RoleName.Contains(o.RoleName); }
+            if (!string.IsNullOrEmpty(searchModel.RoleName)) { whereFun = m => m.RoleName.Contains(searchModel.RoleName); }
 
             //排序表达式
             Expression<Func<Role, object>> orderByFun = null;
@@ -511,7 +514,7 @@ namespace Services.SystemServices
 
             try
             {
-                return await base.GetPageAsync(o.PageIndex, o.PageSize, whereFun, orderByFun, true);
+                return await base.GetPageAsync(searchModel.PageIndex, searchModel.PageSize, whereFun, orderByFun, true);
             }
             catch (Exception e)
             {

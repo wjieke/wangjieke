@@ -14,6 +14,9 @@ using static Model.Enum.SystemEnum;
 
 namespace Services.SystemServices
 {
+    /// <summary>
+    /// 地区服务类
+    /// </summary>
     public class AreaService : TreeService<Area>, IAreaService
     {
         #region 增删改
@@ -171,20 +174,20 @@ namespace Services.SystemServices
         #region 查询
 
         /// <summary>
-        /// 查询(分页数据)
+        /// 查询分页数据
         /// </summary>
-        /// <param name="o">搜索条件数据</param>
-        /// <returns>Json数据集合</returns>
-        public QueryResultInfo<Area> GetPage(AreaSearchModel o)
+        /// <param name="searchModel">搜索条件数据</param>
+        /// <returns>查询结果信息</returns>
+        public QueryResultInfo<Area> GetPage(AreaSearchModel searchModel)
         {
             #region "多条件过滤查询"
 
             //条件查询表达式
             Expression<Func<Area, bool>> whereFun = null;
-            whereFun = m => m.ParentId == o.ParentId;
+            whereFun = m => m.ParentId == searchModel.ParentId;
             //if (o.ParentId.HasValue) { whereFun = m => m.ParentId == o.ParentId; }
-            if (!string.IsNullOrEmpty(o.AreaName)) { whereFun = m => m.AreaName.Contains(o.AreaName); }
-            if (!string.IsNullOrEmpty(o.Abbreviation)) { whereFun = m => m.Abbreviation.Contains(o.Abbreviation); }
+            if (!string.IsNullOrEmpty(searchModel.AreaName)) { whereFun = m => m.AreaName.Contains(searchModel.AreaName); }
+            if (!string.IsNullOrEmpty(searchModel.Abbreviation)) { whereFun = m => m.Abbreviation.Contains(searchModel.Abbreviation); }
 
             //排序表达式
             Expression<Func<Area, object>> orderByFun = null;
@@ -203,7 +206,7 @@ namespace Services.SystemServices
 
             try
             {
-                return base.GetPage(o.PageIndex, o.PageSize, whereFun);
+                return base.GetPage(searchModel.PageIndex, searchModel.PageSize, whereFun);
             }
             catch (Exception e)
             {

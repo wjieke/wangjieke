@@ -22,21 +22,6 @@ export const menus = [
         ]
     },
     {
-        index: 'Blog',
-        menuName: '博客网站管理',
-        menuIcon: 'el-icon-document',
-        children: [
-            {
-                index: 'NewsType',
-                menuName: '新闻分类'
-            },
-            {
-                index: 'NewsManage',
-                menuName: '新闻管理'
-            }
-        ]
-    },
-    {
         index: 'System',
         menuName: '平台系统管理',
         menuIcon: 'el-icon-document',
@@ -68,6 +53,21 @@ export const menus = [
             {
                 index: 'Menu',
                 menuName: '菜单管理'
+            }
+        ]
+    },
+    {
+        index: 'Blog',
+        menuName: '博客网站管理',
+        menuIcon: 'el-icon-document',
+        children: [
+            {
+                index: 'NewsType',
+                menuName: '新闻分类'
+            },
+            {
+                index: 'NewsManage',
+                menuName: '新闻管理'
             }
         ]
     },

@@ -7,16 +7,19 @@ using Model.ModelView;
 
 namespace IServices.ISystemServices
 {
+    /// <summary>
+    /// 地区服务接口
+    /// </summary>
     public interface IAreaService : ITreeService<Area>
     {
         #region 查询
 
         /// <summary>
-        /// 查询(分页数据)
+        /// 查询分页数据
         /// </summary>
-        /// <param name="searchArea">搜索条件数据</param>
-        /// <returns>Json数据集合</returns>
-        QueryResultInfo<Area> GetPage(AreaSearchModel areaSearch);
+        /// <param name="searchModel">搜索条件数据</param>
+        /// <returns>查询结果信息</returns>
+        QueryResultInfo<Area> GetPage(AreaSearchModel searchModel);
 
         /// <summary>
         /// 获取树结构数据

@@ -7,6 +7,9 @@ using System.Text;
 
 namespace IService.ISystemServices
 {
+    /// <summary>
+    /// 用户角色服务接口
+    /// </summary>
     public interface IUserRoleService: IBaseService<UserRole>
     {
 

@@ -14,6 +14,9 @@ using static Model.Enum.SystemEnum;
 
 namespace Services.SystemServices
 {
+    /// <summary>
+    /// 菜单服务类
+    /// </summary>
     public class MenuService : TreeService<Menu>, IMenuService
     {
         #region 增删改
@@ -175,17 +178,17 @@ namespace Services.SystemServices
         #region 查询
 
         /// <summary>
-        /// 查询(分页数据)
+        /// 查询分页数据
         /// </summary>
-        /// <param name="o">搜索条件数据</param>
-        /// <returns>Json数据集合</returns>
-        public QueryResultInfo<Menu> GetPage(MenuSearchModel o)
+        /// <param name="searchModel">搜索条件数据</param>
+        /// <returns>查询结果信息</returns>
+        public QueryResultInfo<Menu> GetPage(MenuSearchModel searchModel)
         {
             //条件查询表达式
             Expression<Func<Menu, bool>> whereFun = null;
-            whereFun = m => m.ParentId == o.ParentId;
+            whereFun = m => m.ParentId == searchModel.ParentId;
             //if (o.ParentId.HasValue) { whereFun = m => m.ParentId == o.ParentId; }
-            if (!string.IsNullOrEmpty(o.MenuName)) { whereFun = m => m.MenuName.Contains(o.MenuName); }
+            if (!string.IsNullOrEmpty(searchModel.MenuName)) { whereFun = m => m.MenuName.Contains(searchModel.MenuName); }
 
             //排序表达式
             Expression<Func<Menu, object>> orderByFun = null;
@@ -193,7 +196,7 @@ namespace Services.SystemServices
 
             try
             {
-                return base.GetPage(o.PageIndex, o.PageSize, whereFun, orderByFun, true);
+                return base.GetPage(searchModel.PageIndex, searchModel.PageSize, whereFun, orderByFun, true);
             }
             catch (Exception e)
             {

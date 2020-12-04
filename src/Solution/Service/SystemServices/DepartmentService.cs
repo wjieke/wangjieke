@@ -14,6 +14,9 @@ using static Model.Enum.SystemEnum;
 
 namespace Services.SystemServices
 {
+    /// <summary>
+    /// 部门服务类
+    /// </summary>
     public class DepartmentService : TreeService<Department>, IDepartmentService
     {
         #region 增删改
@@ -171,19 +174,19 @@ namespace Services.SystemServices
         #region 查询
 
         /// <summary>
-        /// 查询(分页数据)
+        /// 查询分页数据
         /// </summary>
-        /// <param name="o">搜索条件数据</param>
-        /// <returns>Json数据集合</returns>
-        public QueryResultInfo<Department> GetPage(DepartmentSearchModel o)
+        /// <param name="searchModel">搜索条件数据</param>
+        /// <returns>查询结果信息</returns>
+        public QueryResultInfo<Department> GetPage(DepartmentSearchModel searchModel)
         {
             #region "多条件过滤查询"
 
             //条件查询表达式
             Expression<Func<Department, bool>> whereFun = null;
-            whereFun = m => m.ParentId == o.ParentId;
+            whereFun = m => m.ParentId == searchModel.ParentId;
             //if (o.ParentId.HasValue) { whereFun = m => m.ParentId == o.ParentId; }
-            if (!string.IsNullOrEmpty(o.DepartmentName)) { whereFun = m => m.DepartmentName.Contains(o.DepartmentName); }
+            if (!string.IsNullOrEmpty(searchModel.DepartmentName)) { whereFun = m => m.DepartmentName.Contains(searchModel.DepartmentName); }
 
             //排序表达式
             Expression<Func<Department, object>> orderByFun = null;
@@ -202,7 +205,7 @@ namespace Services.SystemServices
 
             try
             {
-                return base.GetPage(o.PageIndex, o.PageSize, whereFun);
+                return base.GetPage(searchModel.PageIndex, searchModel.PageSize, whereFun);
             }
             catch (Exception e)
             {

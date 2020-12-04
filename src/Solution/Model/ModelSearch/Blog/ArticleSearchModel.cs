@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.ModelBase;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using static Model.Enum.BlogEnum;
@@ -8,7 +9,7 @@ namespace Model.ModelSearch.Blog
     /// <summary>
     /// 博客文章搜索模型类
     /// </summary>
-    public class ArticleSearchModel
+    public class ArticleSearchModel: SearchBase
     {
         /// <summary>
         /// 标题

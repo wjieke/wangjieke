@@ -8,6 +8,9 @@ using Model.ModelView;
 
 namespace IServices.ISystemServices
 {
+    /// <summary>
+    /// 角色服务接口
+    /// </summary>
     public interface IRoleService : ITreeService<Role>
     {
         #region 同步
@@ -15,11 +18,11 @@ namespace IServices.ISystemServices
         #region 查询
 
         /// <summary>
-        /// 查询(分页数据)
+        /// 查询分页数据
         /// </summary>
         /// <param name="roleSearch">搜索条件数据</param>
-        /// <returns>Json数据集合</returns>
-        QueryResultInfo<Role> GetPage(RoleSearchModel roleSearch);
+        /// <returns>查询结果信息</returns>
+        QueryResultInfo<Role> GetPage(RoleSearchModel searchModel);
 
         /// <summary>
         /// 获取树结构数据

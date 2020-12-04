@@ -8,6 +8,9 @@ using Model.ModelView;
 
 namespace IServices.ISystemServices
 {
+    /// <summary>
+    /// 权限服务接口
+    /// </summary>
     public interface IPermissionService : IBaseService<Permission>
     {
         #region 同步
@@ -44,7 +47,7 @@ namespace IServices.ISystemServices
 
         List<Permission> GetPath(string id = null);
 
-        QueryResultInfo<Permission> GetPage(PermissionSearchModel permissionSearch);
+        QueryResultInfo<Permission> GetPage(PermissionSearchModel searchModel);
 
         List<Permission> GetNode(string parentId = null);
 
@@ -88,7 +91,7 @@ namespace IServices.ISystemServices
 
         Task<List<Permission>> GetPathAsync(string id = null);
 
-        Task<QueryResultInfo<Permission>> GetPageAsync(PermissionSearchModel permissionSearch);
+        Task<QueryResultInfo<Permission>> GetPageAsync(PermissionSearchModel searchModel);
 
         Task<List<Permission>> GetNodeAsync(string parentId = null);
 

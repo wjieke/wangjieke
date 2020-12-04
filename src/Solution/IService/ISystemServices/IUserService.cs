@@ -1,6 +1,6 @@
 ﻿using IServices.IBaseServices;
 using Model.ModelDto;
-using Model.ModelSearch;
+using Model.ModelSearch.System;
 using Model.Entity.System;
 using Model.ModelTool;
 using Model.ModelView;

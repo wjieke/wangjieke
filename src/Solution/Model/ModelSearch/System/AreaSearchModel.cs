@@ -1,6 +1,6 @@
 ﻿using Model.ModelBase;
 
-namespace Model.ModelSearch
+namespace Model.ModelSearch.System
 {
     /// <summary>
     /// 地区搜索模型

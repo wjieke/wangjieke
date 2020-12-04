@@ -1,6 +1,6 @@
 ﻿using IServices.ISystemServices;
 using Microsoft.AspNetCore.Mvc;
-using Model.ModelSearch;
+using Model.ModelSearch.System;
 using Model.Entity.System;
 using Model.ModelTool;
 using System.Collections.Generic;

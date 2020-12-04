@@ -1,7 +1,7 @@
 ﻿using Model.ModelBase;
 using System;
 
-namespace Model.ModelSearch
+namespace Model.ModelSearch.System
 {
     /// <summary>
     /// 用户搜索过滤类

@@ -17,15 +17,15 @@ namespace Model.ModelBase
         public virtual DateTime? CreateTime { get; set; } = DateTime.Now;
 
         /// <summary>
+        /// 修改时间
+        /// </summary>
+        public virtual DateTime? ModifyTime { get; set; }
+
+        /// <summary>
         /// 创建者编号
         /// </summary>
         [Column("CreatorID")]
         public virtual int? CreatorId { get; set; }
-
-        /// <summary>
-        /// 修改时间
-        /// </summary>
-        public virtual DateTime? ModifyTime { get; set; }
 
         /// <summary>
         /// 修改者编号

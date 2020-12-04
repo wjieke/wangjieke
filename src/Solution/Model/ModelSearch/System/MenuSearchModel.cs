@@ -1,16 +1,16 @@
 ﻿using Model.ModelBase;
 
-namespace Model.ModelSearch
+namespace Model.ModelSearch.System
 {
     /// <summary>
-    /// 角色搜索模型类
+    /// 菜单搜索模型类
     /// </summary>
-    public class RoleSearchModel : SearchBase
+    public class MenuSearchModel: SearchBase
     {
         /// <summary>
-        /// 角色名称
+        /// 菜单名称
         /// </summary>
-        public string RoleName { get; set; }
+        public string MenuName { get; set; }
 
         /// <summary>
         /// 父ID

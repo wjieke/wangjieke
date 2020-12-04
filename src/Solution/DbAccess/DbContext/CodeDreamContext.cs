@@ -1,5 +1,6 @@
 ﻿using DbAccess.Extensions;
 using Microsoft.EntityFrameworkCore;
+using Model.Entity.Blog;
 using Model.Entity.System;
 
 namespace DbAccess.DbContext
@@ -17,6 +18,8 @@ namespace DbAccess.DbContext
         {
 
         }
+
+        #region Admin 后台模块
 
         /// <summary>
         /// 用户
@@ -57,6 +60,22 @@ namespace DbAccess.DbContext
         /// 部门
         /// </summary>
         public DbSet<Department> Departments { get; set; }
+
+        /// <summary>
+        /// 数据字典
+        /// </summary>
+        public DbSet<DataDictionary> DataDictionarys { get; set; }
+
+        #endregion
+
+        #region Blog 个人博客
+
+        /// <summary>
+        /// 博客文章
+        /// </summary>
+        public DbSet<Article> Articles { get; set; }
+
+        #endregion
 
         /// <summary>
         /// 模型创建时构建方法

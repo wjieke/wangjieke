@@ -1,6 +1,6 @@
 ﻿using Model.ModelBase;
 
-namespace Model.ModelSearch
+namespace Model.ModelSearch.System
 {
     /// <summary>
     /// 公司搜索模型类

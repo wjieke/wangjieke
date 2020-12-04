@@ -1,5 +1,5 @@
 ﻿using IServices.IBaseServices;
-using Model.ModelSearch;
+using Model.ModelSearch.System;
 using Model.Entity.System;
 using System.Collections.Generic;
 using Model.ModelTool;

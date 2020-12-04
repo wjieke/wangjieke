@@ -1,5 +1,5 @@
 ﻿using IServices.IBaseServices;
-using Model.ModelSearch;
+using Model.ModelSearch.System;
 using Model.Entity.System;
 using System.Threading.Tasks;
 using Model.ModelTool;

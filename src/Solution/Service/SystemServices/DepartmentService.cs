@@ -2,7 +2,7 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Model.Entity.System;
-using Model.ModelSearch;
+using Model.ModelSearch.System;
 using Model.ModelTool;
 using Model.ModelView;
 using Services.BaseServices;

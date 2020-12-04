@@ -7,7 +7,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Model.Entity.System;
 using Model.ModelDto;
-using Model.ModelSearch;
+using Model.ModelSearch.System;
 using Model.ModelTool;
 using Model.ModelView;
 using Services.BaseServices;

@@ -1,22 +1,19 @@
-﻿using Model.ModelBase;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using static Model.Enum.BlogEnum;
 
-namespace Model.Entity.Blog
+namespace Model.ModelSearch.Blog
 {
     /// <summary>
-    /// 文章
+    /// 博客文章搜索模型类
     /// </summary>
-    public class Article: SystemBase
+    public class ArticleSearchModel
     {
         /// <summary>
         /// 标题
         /// </summary>
         public string Title { get; set; }
-
-        /// <summary>
-        /// 内容
-        /// </summary>
-        public string Content { get; set; }
 
         /// <summary>
         /// 文章类型

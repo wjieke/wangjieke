@@ -566,7 +566,7 @@
 
 <style scoped>
     .el-header {
-        height: 100% !important;
+        height: 124px !important;
     }
 
     .search-card, .operation-card, .pagination-card {

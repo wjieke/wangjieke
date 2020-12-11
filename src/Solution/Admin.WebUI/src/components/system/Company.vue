@@ -315,7 +315,7 @@
 
 <style scoped>
     .search-header {
-        height: 100% !important;
+        height: 124px !important;
     }
 
     .search-form-inline {

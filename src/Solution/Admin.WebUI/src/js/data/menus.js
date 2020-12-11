@@ -15,7 +15,19 @@ export const menus = [
                 children: [
                     {
                         index: 'Residential',
-                        menuName: '小区管理'
+                        menuName: '小区管理',
+                        children: [
+                            {
+                                index: 'aaa',
+                                menuName: 'AAA',
+                                //children:[]
+                            },
+                            {
+                                index: 'bbb',
+                                menuName: 'BBB',
+                                //children: []
+                            }
+                        ]
                     }
                 ]
             }
@@ -62,55 +74,66 @@ export const menus = [
         menuIcon: 'el-icon-document',
         children: [
             {
+                index: 'Article',
+                menuName: '文章管理'
+            }
+        ]
+    },
+    {
+        index: 'Site',
+        menuName: '官网网站管理',
+        menuIcon: 'el-icon-document',
+        children: [
+            {
                 index: 'NewsType',
-                menuName: '新闻分类'
+                menuName: '新闻类型'
             },
             {
-                index: 'NewsManage',
+                index: 'News',
                 menuName: '新闻管理'
             }
         ]
     },
     {
-        index: 'WebSite',
-        menuName: '官网网站管理',
+        index: 'Other',
+        menuName: '其他模块管理',
         menuIcon: 'el-icon-document',
         children: [
             {
-                index: 'component1',
-                menuName: 'Page1'
+                index: 'component01',
+                menuName: 'Page01'
             },
             {
-                index: 'component2',
-                menuName: 'Page2'
+                index: 'component02',
+                menuName: 'Page02'
             },
             {
-                index: 'component3',
-                menuName: 'Page3'
+                index: 'component03',
+                menuName: 'Page03'
             },
             {
-                index: 'component4',
-                menuName: 'Page4'
+                index: 'component04',
+                menuName: 'Page04'
             },
             {
-                index: 'component5',
-                menuName: 'Page5'
+                index: 'component05',
+                menuName: 'Page05'
             },
             {
-                index: 'component6',
-                menuName: 'Page6'
+                index: 'component06',
+                menuName: 'Page06'
             },
             {
-                index: 'component7',
-                menuName: 'Page7'
+                index: 'component07',
+                menuName: 'Page07'
             },
             {
-                index: 'component8',
-                menuName: 'Page8'
+                index: 'component08',
+                menuName: 'Page08'
             },
             {
-                index: 'component9',
-                menuName: 'Page9'
+                index: 'component09',
+                menuName: 'Page09'
             },
             {
                 index: 'component10',
@@ -151,6 +174,10 @@ export const menus = [
             {
                 index: 'component19',
                 menuName: 'Page19'
+            },
+            {
+                index: 'component20',
+                menuName: 'Page20'
             }
         ]
     }

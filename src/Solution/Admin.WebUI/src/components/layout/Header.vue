@@ -1,11 +1,11 @@
 ﻿<template>
     <el-row>
         <el-col :span="22">
-            <el-button type="info" class="btn-menu" :icon="bindIcon" @click="collapseChage"></el-button>
+            <el-button class="fold-button" type="text" :icon="bindIcon" @click="collapseChage"></el-button>
         </el-col>
-        <el-col :span="2">
-            <el-dropdown class="el-dropdown-link">
-                <span>欢迎您 {{loginInfo.userName}}<i class="el-icon-arrow-down el-icon--right"></i></span>
+        <el-col :span="2" class="col2">
+            <el-dropdown>
+                <el-button type="text">欢迎您 {{loginInfo.userName}}<i class="el-icon-arrow-down el-icon--right"></i></el-button>
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item><a href="https://www.baidu.com/" target="_blank">百度搜索</a></el-dropdown-item>
                     <el-dropdown-item><a href="https://cn.vuejs.org/" target="_blank">Vue官网</a></el-dropdown-item>
@@ -18,12 +18,10 @@
 </template>
 
 <script>
-    import eventBus from '@/js/vue/eventBus';
     export default {
         name: 'HeaderTemplate',
         data() {
             return {
-                activeIndex: "index",
                 isCollapse: false,
                 bindIcon: "el-icon-s-fold",
                 loginInfo: {
@@ -32,7 +30,7 @@
             }
         },
         components: {
-            eventBus
+
         },
         created() {
             this.$store.commit("getLoginInfoMutations");
@@ -44,7 +42,7 @@
         methods: {
             collapseChage() {
                 this.isCollapse = !this.isCollapse;
-                eventBus.$emit('isCollapse', this.isCollapse);
+                this.$eventBus.$emit('isCollapse', this.isCollapse);
             }
         },
         watch: {
@@ -56,21 +54,11 @@
 </script>
 
 <style scoped>
-    .header {
-        background-color: #545C64;
+    .col2 {
+        text-align: center;
     }
 
-    .btn-menu {
-        font-size: 35px;
-        background-color: #545C64;
-        border-radius: 0px;
-        border-width: 0px;
-    }
-
-    .el-dropdown-link {
-        cursor: pointer;
-        color: white;
-        margin-top: 18px;
-        float: right;
+    .fold-button {
+        font-size: 20px;
     }
 </style>

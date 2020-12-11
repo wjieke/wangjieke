@@ -1,28 +1,20 @@
 ﻿<template>
     <el-container>
-        <el-aside>
-            <v-aside></v-aside>
-        </el-aside>
-        <el-container class="section-right">
-            <el-header>
-                <v-header></v-header>
-            </el-header>
-            <v-tabs></v-tabs>
-            <el-main>
-                <router-view></router-view>
-            </el-main>
-            <el-footer>
-                <v-footer></v-footer>
-            </el-footer>
+        <el-aside><vtAside /></el-aside>
+        <el-container>
+            <el-header><vtHeader /></el-header>
+            <vt-tabs></vt-tabs>
+            <el-main><router-view /></el-main>
+            <el-footer><vtFooter /></el-footer>
         </el-container>
     </el-container>
 </template>
 
 <script>
-    import vAside from './Aside.vue';
-    import vHeader from './Header.vue';
-    import vFooter from './Footer.vue';
-    import vTabs from './Tabs.vue';
+    import vtAside from './Aside.vue';
+    import vtHeader from './Header.vue';
+    import vtFooter from './Footer.vue';
+    import vtTabs from './Tabs.vue';
     export default {
         name: 'HomeTemplate',
         data() {
@@ -32,10 +24,10 @@
             }
         },
         components: {
-            vAside,
-            vHeader,
-            vFooter,
-            vTabs
+            vtAside,
+            vtHeader,
+            vtFooter,
+            vtTabs
         },
         created() {
         },
@@ -48,10 +40,10 @@
 
 <!-- 添加"scoped"属性来限制CSS只应用到当前这个组件 lang="scss"使用sass写样式-->
 <style scoped>
+    /*左侧样式*/
     .el-aside {
         width: auto !important;
         height: 100vh;
-        background-color: #545C64;
     }
         /*滚动条整体样式*/
         .el-aside::-webkit-scrollbar {
@@ -66,26 +58,32 @@
         }
         /*滚动条里面轨道*/
         .el-aside::-webkit-scrollbar-track {
-            background: #545C64;
+            background: #FFAA25;
         }
 
-    .section-right {
+    /*容器样式*/
+    .el-container {
         height: 100vh;
     }
 
+    /*右侧页眉*/
+    .el-header {
+        margin: 0px;
+        padding: 0px;
+        background-color: #545C64;
+        height: 60px;
+        line-height: 60px;
+    }
+    /*右侧主体*/
     .el-main {
         background-color: #F2F2F2;
         color: #333;
         text-align: center;
         margin: 0px;
         padding: 0px;
+        /*width:calc(100vw - 300px);*/
     }
-
-    .el-header {
-        padding: 0px;
-        background-color: #545C64;
-    }
-
+    /*右侧页尾*/
     .el-footer {
         background-color: #2F4050;
         color: white;

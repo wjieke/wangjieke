@@ -1,6 +1,6 @@
-﻿<template>
-    <el-menu class="el-menu-vertical-aside"
-             mode="vertical"
+﻿<!--左侧模板文件-->
+<template>
+    <el-menu mode="vertical"
              background-color="#545c64"
              text-color="#fff"
              active-text-color="#66B1FF"
@@ -9,56 +9,28 @@
              :unique-opened="true"
              :collapse-transition="false"
              router>
-        <template v-for="item in nodes">
-            <template v-if="item.children">
-                <el-submenu :index="item.index" :key="item.index">
-                    <template slot="title">
-                        <i :class="item.menuIcon"></i>
-                        <span slot="title">{{ item.menuName }}</span>
-                    </template>
-                    <template v-for="subItem in item.children">
-                        <el-submenu v-if="subItem.children" :index="subItem.index" :key="subItem.index">
-                            <template slot="title">
-                                {{ subItem.menuName }}
-                            </template>
-                            <el-menu-item v-for="(threeItem, i) in subItem.children"
-                                          :key="i"
-                                          :index="threeItem.index">{{ threeItem.menuName }}</el-menu-item>
-                        </el-submenu>
-                        <el-menu-item v-else
-                                      :index="subItem.index"
-                                      :key="subItem.index">{{ subItem.menuName }}</el-menu-item>
-                    </template>
-                </el-submenu>
-            </template>
-            <template v-else>
-                <el-menu-item :index="item.index" :key="item.index">
-                    <i :class="item.menuIcon"></i>
-                    <span slot="title">{{ item.menuName }}</span>
-                </el-menu-item>
-            </template>
-        </template>
+        <menu-tree :menuList="menuList"></menu-tree>
     </el-menu>
 </template>
 
 <script>
-    import eventBus from "@/js/vue/eventBus";
     import { menus } from "@/js/data/menus.js";
     import { menuUrl } from "@/js/common/api.js";
+    import menuTree from './Menu.vue'; //引入菜单模板
     export default {
         name: "AsideTemplate",
         data() {
             return {
                 isCollapse: false,
-                nodes: menus
+                menuList: menus
             };
         },
         components: {
-            eventBus
+            menuTree
         },
         created: function () {
             var _this = this;
-            eventBus.$on("isCollapse", function (value) {
+            this.$eventBus.$on("isCollapse", function (value) {
                 _this.isCollapse = value;
             });
             //this.getMenu();
@@ -67,19 +39,17 @@
         methods: {
             getMenu() {
                 var _this = this;
-                _this
-                    .$axios({
-                        method: "get",
-                        url: menuUrl.getNode,
-                        params: { id: null }
-                    })
-                    .then(function (response) {
-                        var retDatas = response.data;
-                        _this.nodes = retDatas;
-                        if (_this.nodes.length === 0 || _this.nodes === null) {
-                            _this.nodes = menus;
-                        }
-                    });
+                _this.$axios({
+                    method: "get",
+                    url: menuUrl.getNode,
+                    params: { id: null }
+                }).then(function (response) {
+                    var retDatas = response.data;
+                    _this.nodes = retDatas;
+                    if (_this.menuList.length === 0 || _this.menuList === null) {
+                        _this.menuList = menus;
+                    }
+                });
             }
         },
         computed: {
@@ -92,18 +62,14 @@
 </script>
 
 <style scoped>
-    .el-menu-vertical-aside {
+    /*菜单ul样式*/
+    .el-menu {
         height: 100vh;
         border: solid 0px white;
     }
-
-        .el-menu-vertical-aside:not(.el-menu--collapse) {
-            min-width: 250px;
+        /*菜单折叠样式*/
+        .el-menu:not(.el-menu--collapse) {
+            min-width: 300px;
             width: auto !important;
         }
-
-    .el-menu-item.is-active {
-        color: #409EFF !important;
-        border-right: 0px solid #409EFF;
-    }
 </style>

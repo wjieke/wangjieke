@@ -5,6 +5,7 @@ using Model.ModelTool;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static Model.Enum.BlogEnum;
 using static Model.Enum.SystemEnum;
 
 namespace WebAPI.Controllers.Tools
@@ -19,6 +20,7 @@ namespace WebAPI.Controllers.Tools
     {
         #region 枚举列表接口
 
+        #region 枚举属性
         /// <summary>
         /// 数据状态
         /// </summary>
@@ -29,6 +31,13 @@ namespace WebAPI.Controllers.Tools
         /// </summary>
         private SexType SexType { get; set; }
 
+        /// <summary>
+        /// 文章类型
+        /// </summary>
+        private ArticleType ArticleType { get; set; }
+        #endregion
+
+        #region 系统枚举
         /// <summary>
         /// 获取终端类别枚举
         /// </summary>
@@ -58,6 +67,21 @@ namespace WebAPI.Controllers.Tools
         {
             return SexType.GetEnumList().Where(i => i.Value != (Convert.ToInt32(SexType.Unknown))).ToList();
         }
+        #endregion
+
+        #region 博客枚举
+
+        /// <summary>
+        /// 获取文章类型枚举
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("GetArticleType")]
+        public List<EnumInfo> GetArticleType()
+        {
+            return ArticleType.GetEnumList();
+        }
+
+        #endregion
 
         #endregion
     }

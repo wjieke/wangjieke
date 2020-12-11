@@ -9,7 +9,7 @@ VueRouter.prototype.push = function push(to) {
 //import引入时用到的“@”代表根节点
 //vue路由require写法是路由按需加载(懒加载)，访问此路由时才加载这个js组件
 import Home from '@/components/layout/Home.vue';
-import Login from '../../components/layout/Login.vue';
+import Login from '../../components/public/Login.vue';
 import { homeChildrenRoutes } from '@/js/data/homeChildrenRoutes.js';
 
 var routes = [
@@ -25,7 +25,7 @@ var routes = [
         path: '/404',
         name: '404',
         meta: { title: '错误页面' },
-        component: resolve => require(['@/components/layout/404.vue'], resolve)
+        component: resolve => require(['@/components/public/404.vue'], resolve)
     },
     {
         path: '/Home',

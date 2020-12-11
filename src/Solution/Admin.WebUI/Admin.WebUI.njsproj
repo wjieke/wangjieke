@@ -53,19 +53,32 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="src\assets\img\logo.png" />
+    <Content Include="src\components\blog\Article.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\components\layout\Menu.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\components\other\component20.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\components\site\News.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\components\site\NewsType.vue">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\components\system\Company.vue" />
     <Content Include="src\components\system\Department.vue" />
-    <Content Include="src\components\news\NewsManage.vue" />
-    <Content Include="src\components\news\NewsType.vue" />
-    <Content Include="src\components\layout\404.vue">
+    <Content Include="src\components\public\404.vue">
       <SubType>Code</SubType>
     </Content>
     <Content Include="src\components\layout\Aside.vue" />
     <Content Include="src\components\layout\Footer.vue" />
     <Content Include="src\components\layout\Header.vue" />
     <Content Include="src\components\layout\Home.vue" />
-    <Content Include="src\components\layout\Index.vue" />
-    <Content Include="src\components\layout\Login.vue" />
+    <Content Include="src\components\public\Index.vue" />
+    <Content Include="src\components\public\Login.vue" />
     <Content Include="src\components\layout\Tabs.vue" />
     <Content Include="src\components\system\Area.vue" />
     <Content Include="src\components\system\Menu.vue" />
@@ -74,25 +87,25 @@
     </Content>
     <Content Include="src\components\system\Role.vue" />
     <Content Include="src\components\system\User.vue" />
-    <Content Include="src\components\website\component1.vue" />
-    <Content Include="src\components\website\component10.vue" />
-    <Content Include="src\components\website\component11.vue" />
-    <Content Include="src\components\website\component12.vue" />
-    <Content Include="src\components\website\component13.vue" />
-    <Content Include="src\components\website\component14.vue" />
-    <Content Include="src\components\website\component15.vue" />
-    <Content Include="src\components\website\component16.vue" />
-    <Content Include="src\components\website\component17.vue" />
-    <Content Include="src\components\website\component18.vue" />
-    <Content Include="src\components\website\component19.vue" />
-    <Content Include="src\components\website\component2.vue" />
-    <Content Include="src\components\website\component3.vue" />
-    <Content Include="src\components\website\component4.vue" />
-    <Content Include="src\components\website\component5.vue" />
-    <Content Include="src\components\website\component6.vue" />
-    <Content Include="src\components\website\component7.vue" />
-    <Content Include="src\components\website\component8.vue" />
-    <Content Include="src\components\website\component9.vue" />
+    <Content Include="src\components\other\component01.vue" />
+    <Content Include="src\components\other\component10.vue" />
+    <Content Include="src\components\other\component11.vue" />
+    <Content Include="src\components\other\component12.vue" />
+    <Content Include="src\components\other\component13.vue" />
+    <Content Include="src\components\other\component14.vue" />
+    <Content Include="src\components\other\component15.vue" />
+    <Content Include="src\components\other\component16.vue" />
+    <Content Include="src\components\other\component17.vue" />
+    <Content Include="src\components\other\component18.vue" />
+    <Content Include="src\components\other\component19.vue" />
+    <Content Include="src\components\other\component02.vue" />
+    <Content Include="src\components\other\component03.vue" />
+    <Content Include="src\components\other\component04.vue" />
+    <Content Include="src\components\other\component05.vue" />
+    <Content Include="src\components\other\component06.vue" />
+    <Content Include="src\components\other\component07.vue" />
+    <Content Include="src\components\other\component08.vue" />
+    <Content Include="src\components\other\component09.vue" />
     <Content Include="src\js\common\api.js">
       <SubType>Code</SubType>
     </Content>
@@ -108,7 +121,6 @@
     <Content Include="src\js\data\menus.js">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="src\js\vue\eventBus.js" />
     <Content Include="src\js\common\utility.js">
       <SubType>Code</SubType>
     </Content>
@@ -128,10 +140,11 @@
     <Folder Include="src\assets\img\" />
     <Folder Include="src\components\" />
     <Folder Include="src\components\blog\" />
-    <Folder Include="src\components\news\" />
     <Folder Include="src\components\layout\" />
+    <Folder Include="src\components\other\" />
+    <Folder Include="src\components\public\" />
     <Folder Include="src\components\system\" />
-    <Folder Include="src\components\website\" />
+    <Folder Include="src\components\site\" />
     <Folder Include="src\js\" />
     <Folder Include="src\js\common\" />
     <Folder Include="src\js\element\" />

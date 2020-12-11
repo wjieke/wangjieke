@@ -22,5 +22,7 @@
 
     html, body {
         background-color: #F2F2F2;
+        width:100% !important;
+        height:100% !important;
     }
 </style>

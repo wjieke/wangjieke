@@ -99,3 +99,12 @@ export const menuUrl = {
     getPath: baseUrl + '/Menu/GetPath',
     getList: baseUrl + '/Menu/GetList'
 }
+
+//博客文章管理
+export const articleUrl = {
+    addInfo: baseUrl + '/Article/AddInfo',
+    modInfo: baseUrl + '/Article/ModInfo',
+    delInfo: baseUrl + '/Article/DelInfo',
+    getInfo: baseUrl + '/Article/GetInfo',
+    getPage: baseUrl + '/Article/GetPage'
+}

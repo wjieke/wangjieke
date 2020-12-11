@@ -1,13 +1,13 @@
-﻿<template v-if="showTabs">
-    <el-row>
+﻿<template>
+    <el-row v-if="showTabs">
         <el-col :span="22">
             <el-tabs v-model="editableTabsValue" type="card" closable @tab-remove="removeTab" @tab-click="clickTabs">
                 <el-tab-pane v-for="tab in editableTabs" :key="tab.name" :label="tab.title" :name="tab.name"></el-tab-pane>
             </el-tabs>
         </el-col>
-        <el-col :span="2">
+        <el-col :span="2" class="col2">
             <el-dropdown @command="handleTabs">
-                <el-button>标签页选项<i class="el-icon-arrow-down el-icon--right"></i></el-button>
+                <el-button type="text">标签页选项卡<i class="el-icon-arrow-down el-icon--right"></i></el-button>
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item command="other">关闭其他</el-dropdown-item>
                     <el-dropdown-item command="all">关闭所有</el-dropdown-item>
@@ -107,12 +107,8 @@
 </script>
 
 <style scoped>
-    .el-button {
-        height: 40px;
-        background-color: #F2F2F2;
-    }
-
-    .el-tabs--card > .el-tabs__header .el-tabs__item.is-active {
-        border-bottom-color: #409EFF !important;
+    .col2 {
+        text-align: center;
+        border-bottom: 1px solid #DCDFE6;
     }
 </style>

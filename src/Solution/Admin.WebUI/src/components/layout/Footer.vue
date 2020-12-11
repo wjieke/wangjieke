@@ -1,6 +1,6 @@
 ﻿<template>
     <div class="footer">
-        Copyright &copy; 2020 Jieke 需要梦想，即使遥远
+        Copyright &copy; 2020 Jieke 需要梦想，即使遥远 | 浙ICP备17035371号
     </div>
 </template>
 
